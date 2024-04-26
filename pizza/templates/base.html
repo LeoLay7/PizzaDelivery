@@ -3,7 +3,9 @@
 <head>
     {% load static %}
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/test.css' %}">
+    {% block links %}
+
+    {% endblock %}
     <title>{% block title %}Жар-Пицца{% endblock %}</title>
 </head>
 <body>
