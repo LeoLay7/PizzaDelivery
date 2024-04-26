@@ -22,6 +22,7 @@ import django.conf.urls.static
 urlpatterns = [
     django.urls.path("admin/", django.contrib.admin.site.urls),
     django.urls.path("", django.urls.include("homepage.urls")),
+    django.urls.path("products/", django.urls.include("products.urls"))
 ]
 
 if django.conf.settings.DEBUG:

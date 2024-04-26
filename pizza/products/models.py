@@ -1,5 +1,6 @@
 import django.db.models
 import products.tools
+import products.managers
 
 
 class Ingredient(django.db.models.Model):
@@ -15,7 +16,7 @@ class ProductType(django.db.models.Model):
     name = django.db.models.CharField(max_length=30, verbose_name="тип")
     sizable = django.db.models.BooleanField(verbose_name="изменяемый размер")
     sizes = django.db.models.JSONField(verbose_name="размеры")
-    extra_fields = django.db.models.JSONField(verbose_name="доп. поля")
+    extra_fields = django.db.models.JSONField(verbose_name="доп. поля", blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -37,6 +38,7 @@ class BaseProduct(django.db.models.Model):
         verbose_name="тип продукта",
         null=True,
     )
+    sizable = django.db.models.BooleanField(verbose_name="изменяемый размер", default=False)
     ingredients = django.db.models.ManyToManyField(
         Ingredient,
         related_name="ingredients",
@@ -48,7 +50,12 @@ class BaseProduct(django.db.models.Model):
         verbose_name="доп ингредиенты",
     )
     editable = django.db.models.BooleanField(verbose_name="редактируемо")
-    price = django.db.models.PositiveIntegerField(verbose_name="цена", default=0)
+    prices = django.db.models.JSONField(
+        verbose_name="цены",
+        null=True,
+    )
+
+    objects = products.managers.BaseProductManager()
 
     def __str__(self):
         return self.name
