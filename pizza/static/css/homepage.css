@@ -1,33 +1,33 @@
 
 .custom-box {
-    position: relative; /* Изменяем позиционирование на relative, чтобы дочерний элемент мог быть позиционирован относительно этого блока */
+    position: relative;
     width: 438px;
     height: 138px;
     left: 102px;
     top: 631px;
-    background: rgba(255, 222, 192, 0.74);
+    background: #FF6700;
     border-radius: 40px;
-    z-index: 0; /* Устанавливаем z-index, чтобы элемент был ниже ссылки */
+    z-index: 0; 
   }
   
   .menu-button {
-    position: absolute; /* Позиционируем ссылку абсолютно внутри блока */
-    width: 100%; /* Занимает всю ширину блока */
-    height: 100%; /* Занимает всю высоту блока */
-    left: 80px; /* Выравниваем по левому краю блока */
-    top: 0; /* Выравниваем по верхнему краю блока */
+    position: absolute; 
+    width: 100%; 
+    height: 100%;
+    left: 80px; 
+    top: 0; 
     font-family: 'Inter';
     font-style: italic;
     font-weight: 900;
     font-size: 48px;
-    line-height: 138px; /* Выравниваем текст по вертикали по центру блока */
+    line-height: 138px; 
     color: #FFFFFF;
     text-decoration: none;
-    z-index: 1; /* Устанавливаем z-index, чтобы ссылка была выше блока */
+    z-index: 1; 
   }
   
 
-/* Rectangle 1 */
+
 
 
 
@@ -49,7 +49,7 @@ body{
 
 
 .photostyle {
-    /* жар1 1 */
+
     position: absolute;
     width: 203px;
     height: 108px;
@@ -95,12 +95,11 @@ z-index: -1;
 
 
 
-/* о нас */
-.about{
+.sale{
     position: absolute;
     width: 58px;
     height: 27px;
-    left: 1051px;
+    left: 1030px;
     top: 27px;
     font-family: 'Inter';
     font-style: italic;
@@ -112,7 +111,7 @@ z-index: -1;
 
 
 /* контакты */
-.kontakt{
+.about{
     position: absolute;
     width: 111px;
     height: 27px;
@@ -126,21 +125,6 @@ z-index: -1;
     color: #BE691D;
 }
 
-
-/* акции */
-.sale{
-    position: absolute;
-    width: 69px;
-    height: 27px;
-    left: 1137px;
-    top: 27px;
-    font-family: 'Inter';
-    font-style: italic;
-    font-weight: 900;
-    font-size: 22px;
-    line-height: 27px;
-    color: #BE691D;
-}
 
 
 /* 📍Москва */
@@ -158,7 +142,6 @@ z-index: -1;
     color: #BE691D;
 
 }
-
 
 
 
