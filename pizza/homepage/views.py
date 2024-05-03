@@ -5,7 +5,7 @@ import products.models
 
 
 class HomepageView(django.views.generic.TemplateView):
-    template_name = "sale/sale.html"
+    template_name = "menu/menu2.html"
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)

@@ -1,0 +1,131 @@
+body {
+    background-color: rgba(255, 222, 192, 0.74);
+}
+
+  
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, fr); /* 3 колонки */
+
+    grid-template-columns: 280px 280px 280px; /* Ширина каждой колонки */
+    grid-template-rows: 280px 280px 280px 280px 280px 280px; /* Высота каждой строки */
+    grid-gap: 230px; /* Отступ между элементами сетки */
+    grid-row-gap: 280px;
+    padding-left: 100px;
+    padding-top: 100px;
+}
+
+.name-grid {
+    display: grid;
+    grid-template-columns: 310px 150px 150px 150px 150px 600px; /* Определение 6 столбцов с определенной шириной */
+    grid-template-rows: 108px; /* Определение высоты каждой строки */
+    align-items: center;
+    padding-top: 32px;
+    padding-left: 32px;
+  }
+
+
+
+.name{
+    text-align: center;
+    color: rgba(190, 105, 29, 0.62);
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 28px;
+    text-decoration: none;
+    color: #fbd7a2;
+    z-index: 1;
+   
+  
+}
+.PIZZA{
+    position: fixed;
+    top: 20px;
+
+
+}
+.SWEET{
+    position: fixed;
+    top: 20px;
+}
+.DRINK{
+    position: fixed;
+    top: 20px;
+}
+.SNACK{
+    position: fixed;
+    top: 20px;
+
+}
+
+.name:hover{
+    text-decoration: underline;
+
+    }
+
+  
+  .product{
+    
+    color: rgba(190, 105, 29, 0.62);
+    text-align: left;
+    font-size: 30px;
+    
+    }
+  
+  .product img {
+    max-width: 100%; /* Ограничиваем ширину */
+    height: 100%;
+    width: 100%; /* Автоматический подбор высоты */
+    z-index: -1;
+  }
+  
+.bin img{
+    position: absolute;
+    width: 31.97px;
+    height: 48.18px;
+    transform: matrix(-0.01, 1, -1, 0, 0, 0);
+    background: rgba(225, 141, 63, 0.64);
+    border-radius: 25px;
+
+
+}
+.bin{
+    text-align: right;
+ }
+
+
+.ingredients {
+
+    
+    font-size: 15px; /* Размер шрифта */
+    color: #a35a29; /* Цвет текста */
+
+  }
+
+.mainphoto img{
+    width: 203px;
+    height: 108px;
+}
+.BIN {
+    width: 90.33px;
+    height: 60.85px;
+    background: #FF6700;
+    border-radius: 28px;
+    font-size: 19px;
+    border: none; /* Убираем границу */
+    color: white;
+    font-weight: bold;
+}
+
+.custom-box {
+    position: fixed;
+ 
+    width: 800px;
+    height: 80px;
+    left: 330px;
+    top: -10px;
+    background: rgba(189, 94, 6, 0.5); /* Прозрачный оранжевый цвет фона */
+    border-radius: 20px; /* Задаем радиус скругления углов */
+    z-index: 1;
+}
+
