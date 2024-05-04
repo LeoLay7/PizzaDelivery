@@ -38,8 +38,6 @@
     <p>ВАШИ ЗАКАЗЫ</p>
     {% for order in user.orders.all %}
         {% include 'includes/profile_order_card.html' %}
-        <a>Подробнее</a>
-        <br>
     {% endfor %}
 
 
