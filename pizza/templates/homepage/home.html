@@ -11,14 +11,13 @@
             <a href="{% url 'products:menu' %}" class="menu-button">Наше меню</a>
         </div>
 
-        <button class="menu-button2">войти</button>
+        <a href="{% url 'login' %}"><button class="menu-button2">войти</button></a>
 
         <img src="{% static 'dev/mainphoto.png' %}" class="photostyle">
         <img src="{% static 'img/homepage/people.png' %}" class="photostyle0">
         <img src="{% static 'img/homepage/pizza.png' %}" class="photostyle2">
-        <p class="Moscow">📍Москва</p>
-        <p class="kontakt">Контакты</p>
-        <p class="sale">Акции</p>
-        <p class="about">О нас</p>
+        <a><p class="Moscow">📍Москва</p></a>
+        <a><p class="sale">Акции</p></a>
+        <a><p class="about">О нас</p></a>
     </div>
 {% endblock %}

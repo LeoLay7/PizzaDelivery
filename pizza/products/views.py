@@ -4,7 +4,7 @@ import products.models
 
 
 class Menu(django.views.generic.ListView):
-    template_name = "menu/catalog.html"
+    template_name = "menu/menu.html"
     model = products.models.BaseProduct
     context_object_name = "products"
 

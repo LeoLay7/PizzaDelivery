@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "about.apps.AboutConfig",
     "phonenumber_field",
     "users.apps.UsersConfig",
+    "api.apps.ApiConfig",
 ]
 
 MIDDLEWARE = [
@@ -144,5 +145,7 @@ AUTH_USER_MODEL = "users.User"
 
 MEDIA_ROOT = BASE_DIR / "media"
 MEDIA_URL = "/media/"
+
+LOGIN_REDIRECT_URL = '/'
 
 

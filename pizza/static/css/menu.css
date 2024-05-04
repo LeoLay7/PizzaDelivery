@@ -1,9 +1,7 @@
 body {
     background-color: rgba(255, 222, 192, 0.74);
-
-
-
 }
+
 .photostyle {
     /* жар1 1 */
     position: absolute;
@@ -249,11 +247,8 @@ body {
 
 /* 4 сыра 1 */
 .pizza21{
-    position: absolute;
-    width: 293px;
-    height: 400px;
-    left: 170px;
-    top: 70px;
+    width: 100%;
+    height: 100%;
     z-index: -1;
     transition: transform 0.3s;
 }
@@ -508,13 +503,9 @@ body {
 }
 
 
-.inbin{
-    
-    position: absolute;
-    width: 31.97px;
-    height: 48.18px;
-    
-    transform: matrix(-0.01, 1, -1, 0, 0, 0);
+.inbin {
+    width: 20%;
+    height: 25%;
     background: rgba(225, 141, 63, 0.64);
     border-radius: 25px;
 }

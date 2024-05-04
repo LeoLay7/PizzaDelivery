@@ -69,10 +69,14 @@ class OrderedProduct(django.db.models.Model):
     removed_ingredient = django.db.models.ManyToManyField(
         Ingredient,
         related_name="removed",
+        blank=True,
+        null=True,
     )
     added_ingredient = django.db.models.ManyToManyField(
         Ingredient,
         related_name="added",
+        blank=True,
+        null=True,
     )
 
     def __str__(self):
