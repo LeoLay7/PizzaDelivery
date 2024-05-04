@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% load static %}
+    <title>Наше меню</title>
+
+    <link rel="stylesheet" href="{% static 'css/menu2.css'%}">
+</head>
+<body>
+        
+    <div class="name-grid">
+        <div class="custom-box"></div>
+        <div class="mainphoto">
+            <img src="{% static 'dev/mainphoto.png' %}">
+        </div>
+        <div class="name">
+            <a class="PIZZA">Пицца</a>
+        </div>
+        <div class="name">
+            <a class="DRINK">Напитки</a>
+        </div>
+        <div class="name">
+            <a class="SNACK">Десерты</a>
+        </div>
+        <div class="name">
+            <a class="SWEET">Закуски</a>
+        </div>
+        <div class="name">
+        <button class="BIN">Корзина</button>
+    </div>
+    </div>
+
+    <div class="product-grid">
+        <!-- Первый ряд -->
+        <div class="product">
+            <div class="bin">
+                <img src="{% static 'bin/bin.png' %}">
+            </div>
+          <img src="https://media.dodostatic.net/image/r:584x584/11EE7D61706D472F9A5D71EB94149304.avif" alt="Product 1">
+      
+          <a>Чоризо фреш <br>799 ₽</a>
+          <p class="ingredients">Острые колбаски чоризо, сладкий перец, моцарелла, фирменный томатный соус</p>
+
+        </div>
+        <div class="product">
+            <div class="bin">
+                <img src="{% static 'bin/bin.png' %}">
+            </div>
+
+          <img src="https://media.dodostatic.net/image/r:584x584/11EE7D612FC7B7FCA5BE822752BEE1E5.avif" alt="Product 2">
+          <a>Пеперони фреш <br>699 ₽ </a>
+          <p class="ingredients">Пикантная пепперони, увеличенная порция моцареллы, томаты, фирменный томатный соус</p>
+  
+        </div>
+        <div class="product">
+            <div class="bin">
+                <img src="{% static 'bin/bin.png' %}">
+            </div>
+          <img src="https://media.dodostatic.net/image/r:584x584/11EE7D610D2925109AB2E1C92CC5383C.avif" alt="Product 3">
+          <a>Сырная <br>650 ₽ </a>
+         <p class="ingredients">Моцарелла, сыры чеддер и пармезан, фирменный соус альфредо</p>
+        </div>
+        <div class="product">
+            <div class="bin">
+                <img src="{% static 'bin/bin.png' %}">
+            </div>
+          <img src="https://media.dodostatic.net/image/r:584x584/11EE7D610E8BBB248F31270BE742B4BD.avif" alt="Product 4">
+          <a>Сырный ципленок <br>700 ₽ </a>
+         <p class="ingredients">Цыпленок, моцарелла, сыры чеддер и пармезан, сырный соус, томаты, фирменный соус альфредо, чеснок</p>
+         </div>
+         <div class="product">
+            <div class="bin">
+                <img src="{% static 'bin/bin.png' %}">
+            </div>
+          <img src="https://media.dodostatic.net/image/r:584x584/11EE7D6110059795842D40396BCF1E73.avif" alt="Product 6">
+          <a>Барбекю <br>680 ₽ </a>
+         <p class="ingredients">Острые колбаски чоризо, острый перец халапеньо, соус барбекю, митболы из говядины, томаты</p>
+         </div>
+         <div class="product">
+            <div class="bin">
+                <img src="{% static 'bin/bin.png' %}">
+            </div>
+          <img src="https://media.dodostatic.net/image/r:584x584/11EE7D6149EB101D8727573088FA2EFF.avif" alt="Product 5">
+          <a>Диабло <br>580 ₽ </a>
+         <p class="ingredients">Цыпленок, бекон, соус барбекю, красный лук, моцарелла, фирменный томатный соус</p>
+         </div>
+         <div class="product">
+            <div class="bin">
+                <img src="{% static 'bin/bin.png' %}">
+            </div>
+          <img src="	https://media.dodostatic.net/image/r:584x584/11EE7D61823BE0D3A35B4ABF658FD06B.avif"  alt="Product 7">
+          <a >Добрый кола <br>109 ₽ </a>
+         </div>
+         <div class="product">
+            <div class="bin">
+                <img src="{% static 'bin/bin.png' %}">
+            </div>
+          <img src="https://media.dodostatic.net/image/r:584x584/11EE7D61BAB86255A811FEEA677AD674.avif"  alt="Product 8">
+          <a >Добрый Лайм-Лимон <br>109 ₽ </a>
+         </div>
+         <div class="product">
+            <div class="bin">
+                <img src="{% static 'bin/bin.png' %}">
+            </div>
+          <img src="https://media.dodostatic.net/image/r:584x584/11EE7D61AB5E21EFBAD01AF3F44296C3.avif"  alt="Product 9">
+          <a >Rich Tea Зеленый с манго <br>109 ₽ </a>
+         </div>
+         <div class="product">
+            <div class="bin">
+                <img src="{% static 'bin/bin.png' %}">
+            </div>
+          <img src="https://media.dodostatic.net/image/r:584x584/11EE7D61AAE50A4CB880D842915C82DC.avif"  alt="Product 10">
+          <a >Добрый апельсин <br>109 ₽ </a>
+         </div>
+         <div class="product">
+            <div class="bin">
+                <img src="{% static 'bin/bin.png' %}">
+            </div>
+          <img src="https://media.dodostatic.net/image/r:584x584/11EE7D61B223E75EB71498BCAA0D4A0D.avif"  alt="Product 11">
+          <a >Апельсиновый сок Rich <br>109 ₽ </a>
+         </div>
+         <div class="product">
+            <div class="bin">
+                <img src="{% static 'bin/bin.png' %}">
+            </div>
+          <img src="https://media.dodostatic.net/image/r:584x584/11EE7D61AE1813B4AB42D8927D061035.avif"  alt="Product 12">
+          <a >Капучино <br>149 ₽ </a>
+         </div>
+         <div class="product">
+            <div class="bin">
+                <img src="{% static 'bin/bin.png' %}">
+            </div>
+          <img src="https://media.dodostatic.net/image/r:584x584/11EEE20B6B6EC471AB74AB8F8885775B.avif"  alt="Product 13">
+          <a >Чизкейк Нью-Йорк <br>159 ₽ </a>
+          <p class="ingredients">Мы перепробовали тысячу десертов и наконец нашли любимца гостей — нежнейший творожный чизкейк</p>
+         </div>
+         <div class="product">
+            <div class="bin">
+                <img src="{% static 'bin/bin.png' %}">
+            </div>
+          <img src="https://media.dodostatic.net/image/r:584x584/11EE796FB18AFBBEBF188C25EBD2E581.avif"  alt="Product 14">
+          <a >Маффин три шоколада <br>159 ₽ </a>
+          <p class="ingredients">Раз откусить — навсегда полюбить!Ну и кекс этот маффин! Он из натурального какао, а внутри — нежная начинка из кубиков белого и молочного шоколада</p>
+         </div>
+         <div class="product">
+            <div class="bin">
+                <img src="{% static 'bin/bin.png' %}">
+            </div>
+          <img src="	https://media.dodostatic.net/image/r:584x584/11EE7D61B679E058AEC6DC063470AFB2.avif"  alt="Product 15">
+          <a >Рулетики с корицей <br>195 ₽ </a>
+          <p class="ingredients">Десерт, одобренный нашими бабушками. Горячие сладкие рулетики с пряной корицей и сахаром</p>
+         </div>
+         <div class="product">
+            <div class="bin">
+                <img src="{% static 'bin/bin.png' %}">
+            </div>
+          <img src="https://media.dodostatic.net/image/r:584x584/11EED646A9CD324C962C6BEA78124F19.avif"  alt="Product 16">
+          <a >Картофель из печи с соусом <br>250 ₽ </a>
+          <p class="ingredients">Запеченная в печи картошечка с пряными специями. В комплекте сырный соус</p>
+         </div>
+         <div class="product">
+            <div class="bin">
+                <img src="{% static 'bin/bin.png' %}">
+            </div>
+          <img src="https://media.dodostatic.net/image/r:584x584/11EE89332D4EE705914D0484EF352D13.avif"  alt="Product 17">
+          <a >Куриные кусочки <br>389 ₽ </a>
+          <p class="ingredients">Сочные кусочки цельного куриного филе с золотистой корочкой</p>
+         </div>
+
+         <div class="product">
+            <div class="bin">
+                <img src="{% static 'bin/bin.png' %}">
+            </div>
+          <img src="https://media.dodostatic.net/image/r:584x584/11EE8936F9E2094DBA71933C4A3C28D6.avif" alt="Product 18">
+          <a >Куриные крылья барбекю <br>389 ₽ </a>
+          <p class="ingredients">Куриные крылышки со специями и ароматом копчения</p>
+         </div>
+         </div>
+
+        
+</body>
+</html>

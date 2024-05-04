@@ -1,0 +1,172 @@
+body {
+    background-color: rgba(255, 222, 192, 0.74);
+
+
+
+}
+.photostyle {
+    /* жар1 1 */
+    position: absolute;
+    width: 203px;
+    height: 108px;
+    left: 32px;
+    top: 32px;
+    background-attachment: fixed;
+}
+
+
+/* о нас */
+.sale{
+    position: absolute;
+    width: 58px;
+    height: 27px;
+    left: 1030px;
+    top: 27px;
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 900;
+    font-size: 22px;
+    line-height: 27px;
+    color: #BE691D;
+}
+
+
+/* контакты */
+.about{
+    position: absolute;
+    width: 111px;
+    height: 27px;
+    left: 901px;
+    top: 27px;
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 900;
+    font-size: 22px;
+    line-height: 27px;
+    color: #BE691D;
+}
+
+
+
+/* 📍Москва */
+.Moscow{
+    position: absolute;
+    width: 256px;
+    height: 60px;
+    left: 747px;
+    top: 24px;
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+    color: #BE691D;
+
+}
+
+
+
+/* Rectangle 5 */
+.rectangle-5{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 624.45px;
+    height: 200.3px;
+    left: 79px;
+    top: 197.58px;
+
+    background: rgba(190, 105, 29, 0.62);
+    border: 3px solid #FF6700;
+    border-radius: 30px;
+    transform: rotate(-0.05deg);
+}
+/* Rectangle 4 */
+.rectangle-4{
+
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 625px;
+    height: 200px;
+    left: 79px;
+    top: 431px;
+
+    background: rgba(190, 105, 29, 0.62);
+    border: 3px solid #FF6700;
+    border-radius: 30px;
+
+}
+/* Rectangle 3 */
+.rectangle-3{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 625px;
+    height: 197px;
+    left: 78px;
+    top: 664px;
+
+    background: rgba(190, 105, 29, 0.62);
+    border: 3px solid #FF6700;
+    border-radius: 30px;
+
+
+}
+
+/* войти */
+.menu-button2{
+    position: absolute;
+    width: 145.76px;
+    height: 41.4px;
+    left: 1250px;
+    top: 40px;
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 39px;
+    color: #FBF7F3;
+    background: #FF6700;
+    border: 2px solid #EB981B;
+    border-radius: 70px;
+
+}
+
+.sale1{
+
+
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 306px;
+    height: 432px;
+    left: 239px;
+    top: 91px;
+
+
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+}
+
+.sale22{
+
+    position: absolute;
+    width: 361px;
+    height: 510px;
+    left: 205px;
+    top: 285.23px;
+
+
+    transform: rotate(72.52deg);
+
+}
+.sale3{
+
+
+    position: absolute;
+    width: 326px;
+    height: 461px;
+    left: 204px;
+    top: 513px;
+}
