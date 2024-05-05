@@ -46,14 +46,12 @@ class BaseProduct(django.db.models.Model):
         related_name="ingredients",
         verbose_name="ингредиенты",
         blank=True,
-        null=True,
     )
     extra_ingredients = django.db.models.ManyToManyField(
         Ingredient,
         related_name="extra",
         verbose_name="доп ингредиенты",
         blank=True,
-        null=True,
     )
     editable = django.db.models.BooleanField(verbose_name="редактируемо")
     prices = django.db.models.JSONField(
@@ -79,13 +77,11 @@ class OrderedProduct(django.db.models.Model):
         Ingredient,
         related_name="removed",
         blank=True,
-        null=True,
     )
     added_ingredient = django.db.models.ManyToManyField(
         Ingredient,
         related_name="added",
         blank=True,
-        null=True,
     )
     size = django.db.models.CharField(
         max_length=30,

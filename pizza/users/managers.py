@@ -8,9 +8,6 @@ class UserManager(BaseUserManager):
     for authentication instead of usernames.
     """
     def create_user(self, email, password, **extra_fields):
-        """
-        Create and save a user with the given email and password.
-        """
         import cart.models
         if not email:
             raise ValueError(_("The Email must be set"))

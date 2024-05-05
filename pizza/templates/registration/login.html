@@ -1,51 +1,46 @@
 {% extends 'base.html' %}
+
 {% load static %}
 
-{% block title %}Авторизация{% endblock %}
+{% block title %}Вход{% endblock %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'css/menu.css'%}">
+<link rel="stylesheet" href="{% static 'css/login.css'%}">
+{% endblock %}
+
 
 {% block content %}
+<div class="mainphoto">
+    <a href="{% url 'homepage:home' %}"><img src="{% static 'dev/mainphoto.png' %}"></a>
+</div>
 
-{% if form.errors %}
-  <p>Your username and password didn't match. Please try again.</p>
-{% endif %}
+<div class="form">
 
-{% if next %}
-  {% if user.is_authenticated %}
-    <p>Your account doesn't have access to this page. To proceed,
-    please login with an account that has access.</p>
-  {% else %}
-    <p>Please login to see this page.</p>
-  {% endif %}
-{% endif %}
+    <div id="login">
+        <h1>Вход</h1>
 
-{% if user.is_authenticated %}
-  {{ request.user.username }}
-{% endif %}
-<form method="post" action="{% url 'login' %}">
-{% csrf_token %}
-<table>
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <div class="field-wrap">
+                <p>Почта<span class="req">*</span></p>
+                    {{ form.username }}
+            </div>
 
-<tr>
-  <td>{{ form.username.label_tag }}</td>
-  <td>{{ form.username }}</td>
-</tr>
+            <div class="field-wrap">
+                <p>Пароль<span class="req">*</span></p>
+                {{ form.password }}
+            </div>
 
-<tr>
-  <td>{{ form.password.label_tag }}</td>
-  <td>{{ form.password }}</td>
-</tr>
-</table>
+            <button class="button button-block">Войти</button>
 
-<input type="submit" value="login" />
-<input type="hidden" name="next" value="{{ next }}" />
-</form>
+        </form>
 
-<form method="post" action="{% url 'logout' %}">
-  {% csrf_token %}
-  <button name="foo" value="logout">Logout</button>
-</form>
+    </div>
 
-{# Assumes you setup the password_reset view in your URLconf #}
-<p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+</div>
 
+
+
+<script src="js/index.js"></script>
 {% endblock %}

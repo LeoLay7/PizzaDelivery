@@ -13,6 +13,7 @@ class RegisterView(django.views.generic.FormView):
 
     def form_valid(self, form):
         form.save()
+        return django.shortcuts.redirect("login")
 
     def get_success_url(self):
         return django.shortcuts.reverse("login")
