@@ -7,6 +7,7 @@ import users.forms
 import payment.forms
 import users.models
 import payment.models
+import products.models
 
 
 class ProfileAddressView(django.views.View):
@@ -143,3 +144,21 @@ class ProfileCardView(django.views.View):
                 return django.http.JsonResponse({'error': 'Invalid request'})
         except django.core.exceptions.ObjectDoesNotExist:
             return django.http.JsonResponse({"error": "Произошла какая-то ошибка"})
+
+
+class MenuView(django.views.View):
+    def post(self, request, pk, *args, **kwargs):
+        if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+            if request.user.is_authenticated:
+                user = request.user
+                base_product = products.models.BaseProduct.objects.get(pk=pk)
+                ordered_product = products.models.OrderedProduct.objects.create(
+                    base_product=base_product,
+                )
+                user.cart.products.add(ordered_product)
+                return django.http.JsonResponse({"success": "Товар успешно добавлен в корзину"})
+            else:
+                return django.http.JsonResponse({"error": "Чтобы добавить товар в корзину, сначала зарегистрируйтесь"})
+
+        else:
+            return django.http.JsonResponse({'error': 'Invalid request'})

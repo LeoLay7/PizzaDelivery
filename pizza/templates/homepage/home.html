@@ -9,11 +9,11 @@
 <body>
 
     <div class="custom-box">
-        <a href="index2.html" class="menu-button">Наше меню</a>
+        <a href="{% url 'products:menu' %}" class="menu-button">Наше меню</a>
       </div>
       
     
-    <button class="menu-button2">войти</button>
+    <a href="{% url 'login' %}"><button class="menu-button2">войти</button></a>
  
     <img src="{% static 'dev/mainphoto.png' %}" class="photostyle">
     <img src="{% static 'img/homepage/people.png' %}" class="photostyle0">

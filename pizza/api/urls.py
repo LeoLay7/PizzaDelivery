@@ -10,7 +10,7 @@ urlpatterns = [
 
 profile_address = [
     django.urls.path("add_address_form/", api.views.ProfileAddressView.as_view(), name="add_address_form"),
-    django.urls.path("add_address/<int:pk>", api.views.ProfileAddressView.as_view(), name="add_address"),
+    django.urls.path("add_address/<int:pk>/", api.views.ProfileAddressView.as_view(), name="add_address"),
     django.urls.path(
         "delete_address/<int:user_pk>/<int:address_pk>",
         api.views.ProfileAddressView.as_view(),
@@ -24,5 +24,10 @@ profile_cards = [
     django.urls.path("delete_card/<int:card_pk>/<int:user_pk>", api.views.ProfileCardView.as_view(), name="delete_card")
 ]
 
+menu = [
+    django.urls.path("add_product/<int:pk>/", api.views.MenuView.as_view(), name="add_product"),
+]
+
 urlpatterns += profile_address
 urlpatterns += profile_cards
+urlpatterns += menu

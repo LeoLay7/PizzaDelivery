@@ -17,6 +17,8 @@ class ProductType(django.db.models.Model):
     sizable = django.db.models.BooleanField(verbose_name="изменяемый размер")
     sizes = django.db.models.JSONField(verbose_name="размеры")
     extra_fields = django.db.models.JSONField(verbose_name="доп. поля", blank=True, null=True)
+    label = django.db.models.CharField(max_length=30, verbose_name="тип во мн. числе", null=True,)
+    label_id = django.db.models.CharField(max_length=30, verbose_name="тип на анг. языке", null=True,)
 
     def __str__(self):
         return self.name
@@ -43,11 +45,15 @@ class BaseProduct(django.db.models.Model):
         Ingredient,
         related_name="ingredients",
         verbose_name="ингредиенты",
+        blank=True,
+        null=True,
     )
     extra_ingredients = django.db.models.ManyToManyField(
         Ingredient,
         related_name="extra",
         verbose_name="доп ингредиенты",
+        blank=True,
+        null=True,
     )
     editable = django.db.models.BooleanField(verbose_name="редактируемо")
     prices = django.db.models.JSONField(
@@ -59,6 +65,9 @@ class BaseProduct(django.db.models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_ingredients(self):
+        return ", ".join([str(ingredient) for ingredient in self.ingredients.all()]).capitalize()
 
 
 class OrderedProduct(django.db.models.Model):
@@ -76,6 +85,12 @@ class OrderedProduct(django.db.models.Model):
         Ingredient,
         related_name="added",
         blank=True,
+        null=True,
+    )
+    size = django.db.models.CharField(
+        max_length=30,
+        default="medium",
+        verbose_name="размер",
         null=True,
     )
 
