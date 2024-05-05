@@ -1,0 +1,5 @@
+<div id="address_{{ address.id }}" style="display: flex;">
+    <li>{{ address }}</li>
+    {% csrf_token %}
+    <button id="delete_address_{{ user.id }}_{{ address.id }}" class="btn btn-danger">-</button>
+</div>

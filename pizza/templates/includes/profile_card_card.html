@@ -1,0 +1,5 @@
+<div id="card_{{ card.id }}" style="display: flex;">
+    <li>{{ card.last_numbers }}</li>
+    {% csrf_token %}
+    <button id="delete_card_{{ user.id }}_{{ card.id }}" class="btn btn-danger">-</button>
+</div>

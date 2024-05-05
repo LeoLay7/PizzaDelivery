@@ -25,11 +25,6 @@
     text-decoration: none;
     z-index: 1; 
   }
-  
-
-
-
-
 
 body{
     background-color: #fbd7a2;
@@ -78,7 +73,7 @@ z-index: -1;
     position: absolute;
     width: 145.76px;
     height: 41.4px;
-    left: 1250px;
+    left: 1200px;
     top: 40px;
     font-family: 'Inter';
     font-style: italic;
@@ -89,7 +84,23 @@ z-index: -1;
     background: #FF6700;
     border: 2px solid #EB981B;
     border-radius: 70px;
+}
 
+.menu-button3 {
+    position: absolute;
+    width: 145.76px;
+    height: 41.4px;
+    left: 1370px;
+    top: 40px;
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 39px;
+    color: #FBF7F3;
+    background: #FF6700;
+    border: 2px solid #EB981B;
+    border-radius: 70px;
 }
 
 
@@ -115,7 +126,7 @@ z-index: -1;
     position: absolute;
     width: 111px;
     height: 27px;
-    left: 901px;
+    left: 1120px;
     top: 27px;
     font-family: 'Inter';
     font-style: italic;
@@ -132,7 +143,7 @@ z-index: -1;
     position: absolute;
     width: 256px;
     height: 60px;
-    left: 747px;
+    left: 900px;
     top: 24px;
     font-family: 'Inter';
     font-style: italic;

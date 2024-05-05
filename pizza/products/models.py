@@ -1,5 +1,6 @@
 import django.db.models
 import products.tools
+import products.managers
 
 
 class Ingredient(django.db.models.Model):
@@ -15,7 +16,9 @@ class ProductType(django.db.models.Model):
     name = django.db.models.CharField(max_length=30, verbose_name="тип")
     sizable = django.db.models.BooleanField(verbose_name="изменяемый размер")
     sizes = django.db.models.JSONField(verbose_name="размеры")
-    extra_fields = django.db.models.JSONField(verbose_name="доп. поля")
+    extra_fields = django.db.models.JSONField(verbose_name="доп. поля", blank=True, null=True)
+    label = django.db.models.CharField(max_length=30, verbose_name="тип во мн. числе", null=True,)
+    label_id = django.db.models.CharField(max_length=30, verbose_name="тип на анг. языке", null=True,)
 
     def __str__(self):
         return self.name
@@ -37,21 +40,32 @@ class BaseProduct(django.db.models.Model):
         verbose_name="тип продукта",
         null=True,
     )
+    sizable = django.db.models.BooleanField(verbose_name="изменяемый размер", default=False)
     ingredients = django.db.models.ManyToManyField(
         Ingredient,
         related_name="ingredients",
         verbose_name="ингредиенты",
+        blank=True,
     )
     extra_ingredients = django.db.models.ManyToManyField(
         Ingredient,
         related_name="extra",
         verbose_name="доп ингредиенты",
+        blank=True,
     )
     editable = django.db.models.BooleanField(verbose_name="редактируемо")
-    price = django.db.models.PositiveIntegerField(verbose_name="цена", default=0)
+    prices = django.db.models.JSONField(
+        verbose_name="цены",
+        null=True,
+    )
+
+    objects = products.managers.BaseProductManager()
 
     def __str__(self):
         return self.name
+
+    def get_ingredients(self):
+        return ", ".join([str(ingredient) for ingredient in self.ingredients.all()]).capitalize()
 
 
 class OrderedProduct(django.db.models.Model):
@@ -62,10 +76,18 @@ class OrderedProduct(django.db.models.Model):
     removed_ingredient = django.db.models.ManyToManyField(
         Ingredient,
         related_name="removed",
+        blank=True,
     )
     added_ingredient = django.db.models.ManyToManyField(
         Ingredient,
         related_name="added",
+        blank=True,
+    )
+    size = django.db.models.CharField(
+        max_length=30,
+        default="medium",
+        verbose_name="размер",
+        null=True,
     )
 
     def __str__(self):

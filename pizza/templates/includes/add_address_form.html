@@ -1,0 +1,5 @@
+<form id="add_address_form_{{ user.id }}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Добавить</button>
+</form>

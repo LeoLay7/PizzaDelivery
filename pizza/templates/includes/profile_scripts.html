@@ -1,0 +1,180 @@
+<script> {# форма формы адреса #}
+    $(document).ready(function(){
+        $("#address_btn").click(function(){
+            var $btn = $(this);
+            var $formContainer = $("#address_form_container");
+
+            // Переключение текста кнопки
+            if ($btn.text() === "Добавить") {
+                $btn.text("Скрыть");
+            } else {
+                $btn.text("Добавить");
+                $formContainer.empty();  // Очищаем содержимое контейнера при скрытии формы
+                return;  // Выходим из обработчика события, так как форма скрыта
+            }
+
+            // Отправка запроса на получение формы
+            $.ajax({
+                url: "{% url 'api:add_address_form' %}",  // URL для обработки запроса на сервер
+                type: "GET",
+                success: function(response){
+                    // Вставляем полученную форму в страницу
+                    $formContainer.html(response);
+                },
+                error: function(xhr, errmsg, err){
+                    console.log(xhr.status + ": " + xhr.responseText); // Выводим ошибку в консоль
+                }
+            });
+        });
+    });
+</script>
+<script> {# добавление адреса в бд #}
+    $(document).ready(function(){
+        $("#address_form_container").on('submit', '#add_address_form_{{ user.id }}', function(event){
+            event.preventDefault(); // Предотвращаем отправку формы по умолчанию
+
+            var userId = "{{ user.id }}";
+            var formData = new FormData(this);
+            formData.append('X-Requested-With', 'XMLHttpRequest');
+
+            $.ajax({
+                url: "{% url 'api:add_address' user.id %}",
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response){
+                    alert(response.success);
+                    $("#address_form_container").empty(); // Скрываем форму после успешного добавления
+                    $("#address_btn").text("Добавить"); // Возвращаем текст кнопки к исходному состоянию
+
+                    var newAddressCard = response.address_card_html;
+                    $("#addresses_list").append(newAddressCard);
+                },
+                error: function(xhr, errmsg, err){
+                    console.log(xhr.status + ": " + xhr.responseText);
+                    alert("Произошла ошибка при добавлении адреса");
+                }
+            });
+        });
+    });
+</script>
+
+
+
+<script> {# удаление адреса #}
+    $(document).ready(function(){
+    // Обработчик нажатия на кнопку удаления адреса
+    $(document).on('click', '[id^="delete_address_{{ user.id }}_"]', function(event){
+        var userId = "{{ user.id }}";
+        var addressId = $(this).attr('id').split('_')[3]; // Получаем id адреса из id кнопки
+        var deleteAddressUrl = "/api/delete_address/" + userId + "/" + addressId;
+
+        $.ajax({
+            url: deleteAddressUrl,
+            type: "DELETE",
+            beforeSend: function(xhr, settings) {
+                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+            },
+            success: function(response){
+                alert(response.success);
+                $("#address_" + addressId).remove(); // Удаляем карточку адреса из DOM
+            },
+            error: function(xhr, errmsg, err){
+                console.log(xhr.status + ": " + xhr.responseText);
+                alert("Произошла ошибка при удалении адреса");
+            }
+        });
+    });
+});
+</script>
+
+<script> {# добавление формы карты #}
+    $(document).ready(function(){
+        $("#card_btn").click(function(){
+            var $btn = $(this);
+            var $formContainer = $("#card_form_container");
+
+            // Переключение текста кнопки
+            if ($btn.text() === "Добавить") {
+                $btn.text("Скрыть");
+            } else {
+                $btn.text("Добавить");
+                $formContainer.empty();  // Очищаем содержимое контейнера при скрытии формы
+                return;  // Выходим из обработчика события, так как форма скрыта
+            }
+
+            // Отправка запроса на получение формы
+            $.ajax({
+                url: "{% url 'api:add_card_form' %}",  // URL для обработки запроса на сервер
+                type: "GET",
+                success: function(response){
+                    // Вставляем полученную форму в страницу
+                    $formContainer.html(response);
+                },
+                error: function(xhr, errmsg, err){
+                    console.log(xhr.status + ": " + xhr.responseText); // Выводим ошибку в консоль
+                }
+            });
+        });
+    });
+</script>
+
+<script> {# добавление карты в бд #}
+    $(document).ready(function(){
+        $("#card_form_container").on('submit', '#add_card_form_{{ user.id }}', function(event){
+            event.preventDefault(); // Предотвращаем отправку формы по умолчанию
+
+            var userId = "{{ user.id }}";
+            var formData = new FormData(this);
+            formData.append('X-Requested-With', 'XMLHttpRequest');
+
+            $.ajax({
+                url: "{% url 'api:add_card' user.id %}",
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response){
+                    alert(response.success);
+                    $("#card_form_container").empty(); // Скрываем форму после успешного добавления
+                    $("#card_btn").text("Добавить"); // Возвращаем текст кнопки к исходному состоянию
+
+                    var newCardCard = response.card_card_html;
+                    $("#cards_list").append(newCardCard);
+                },
+                error: function(xhr, errmsg, err){
+                    console.log(xhr.status + ": " + xhr.responseText);
+                    alert("Произошла ошибка при добавлении карты");
+                }
+            });
+        });
+    });
+</script>
+
+<script> {# удаление карты #}
+    $(document).ready(function(){
+    // Обработчик нажатия на кнопку удаления адреса
+    $(document).on('click', '[id^="delete_card_{{ user.id }}_"]', function(event){
+        var userId = "{{ user.id }}";
+        var cardId = $(this).attr('id').split('_')[3]; // Получаем id карты из id кнопки
+        var deleteCardUrl = "/api/delete_card/" + cardId + "/" + userId;
+
+        $.ajax({
+            url: deleteCardUrl,
+            type: "DELETE",
+            beforeSend: function(xhr, settings) {
+                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+            },
+            success: function(response){
+                alert(response.success);
+                $("#card_" + cardId).remove(); // Удаляем карточку адреса из DOM
+            },
+            error: function(xhr, errmsg, err){
+                console.log(xhr.status + ": " + xhr.responseText);
+                alert("Произошла ошибка при удалении карты");
+            }
+        });
+    });
+});
+</script>

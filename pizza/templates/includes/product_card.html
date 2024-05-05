@@ -1,0 +1,13 @@
+{% load static %}
+<div class="product">
+    <div class="bin">
+        {# <img src="{% static 'bin/bin.png' %}"> #}
+        {% csrf_token %}
+        <button class="btn btn-warning buy-btn" id="buy_product_{{ product.id }}">Купить</button>
+    </div>
+    {% if product.image.url %}
+        <img src="{{ product.image.url }}" alt="Product image">
+    {% endif %}
+    <a>{{ product.name }} <br>{{ product.prices.medium }} ₽</a>
+    <p class="ingredients">{{ product.get_ingredients }}</p>
+</div>
