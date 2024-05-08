@@ -1,6 +1,20 @@
 body {
     background-color: rgba(255, 222, 192, 0.74);
 }
+.BIN1 {
+    width: 100.33px;
+    height: 60.85px;
+    background: #FF6700;
+    border-radius: 28px;
+    font-size: 19px;
+    border: none; /* Убираем границу */
+    color: white;
+    font-weight: bold;
+}
+.BIN1:hover {
+    background: #fba56c;
+    cursor: pointer; 
+}
 
   
 .product-grid {
@@ -58,10 +72,26 @@ body {
 
 }
 
-.name:hover{
-    text-decoration: underline;
-
-    }
+.DRINK:hover {
+    text-decoration-line: underline;
+    text-decoration-color: #FF6700; /* Здесь можно указать любой цвет */
+    cursor: pointer;
+}
+.SNACK:hover {
+    text-decoration-line: underline;
+    text-decoration-color: #FF6700; /* Здесь можно указать любой цвет */
+    cursor: pointer;
+}
+.SWEET:hover {
+    text-decoration-line: underline;
+    text-decoration-color: #FF6700; /* Здесь можно указать любой цвет */
+    cursor: pointer;
+}
+.PIZZA:hover {
+    text-decoration-line: underline;
+    text-decoration-color: #FF6700; /* Здесь можно указать любой цвет */
+    cursor: pointer;
+}
 
   
   .product{
@@ -84,7 +114,7 @@ body {
     width: 31.97px;
     height: 48.18px;
     transform: matrix(-0.01, 1, -1, 0, 0, 0);
-    background: rgba(225, 141, 63, 0.64);
+    background: rgba(226, 158, 94, 0.64);
     border-radius: 25px;
 
 
@@ -92,6 +122,11 @@ body {
 .bin{
     text-align: right;
  }
+
+.btn-ens-style:hover {
+    background: #fba56c;
+    cursor: pointer; 
+}
 
 
 .ingredients {
@@ -105,16 +140,6 @@ body {
 .mainphoto img{
     width: 203px;
     height: 108px;
-}
-.BIN {
-    width: 90.33px;
-    height: 60.85px;
-    background: #FF6700;
-    border-radius: 28px;
-    font-size: 19px;
-    border: none; /* Убираем границу */
-    color: white;
-    font-weight: bold;
 }
 
 .custom-box {
