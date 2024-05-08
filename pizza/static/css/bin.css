@@ -45,7 +45,7 @@ body {
   .shopping-cart {
     width: 1300px;
     height: auto;
-    margin: 30px auto;
+    margin: 20px auto;
     background: #FFFFFF;
     box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
     border-radius: 6px;
@@ -205,13 +205,16 @@ body {
 .oformit{
   text-align: center;
   padding: 1px;
+  font-size: 17px;
+  margin-bottom: 15px;
+  margin-left: 10px;
 }
 .bottonOformit {
     width: 120.33px;
-    height: 60.85px;
+    height: 50.85px;
     background: #FF6700;
     border-radius: 28px;
-    font-size: 19px;
+    font-size: 17px;
     border: none; /* Убираем границу */
     color: white;
     font-weight: bold;
@@ -221,36 +224,27 @@ body {
     cursor: pointer; 
 }
 .info {
-
-        position: relative;
-        font-family: "Gotham Pro", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-        font-weight: 900;
-        color: #70544f;
-        line-height: 1,5;
-        white-space: pre-wrap;
-        margin-top: 10px;
-        font-size: 20px;
+    position: relative;
+    font-family: "Gotham Pro", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 900;
+    color: #70544f;
+    line-height: 1.5; /* заменил "," на "." */
+    white-space: pre-wrap;
+    margin-top: 10px;
+    font-size: 20px;
+    padding-left: 20px; /* Добавляем отступ слева в 20px */
 }
 
 
 .size-options-for-pizza {
+  text-align: center;
+}
+
+.size-options-for-pizza{
     padding-top: 20px;
     margin-right: 60px;
   }
-.bottonForSize{
-    width: 45.33px;
-    height: 45.85px;
-    background: #FF6700;
-    border-radius: 28px;
-    font-size: 14px;
-    border: none; /* Убираем границу */
-    color: white;
-    font-weight: bold;
-}
-.bottonForSize:hover {
-    background: #fba56c; 
-    cursor: pointer;
-}
+
 
 .ingridients {
     padding-top: 20px;
@@ -261,7 +255,7 @@ body {
     height: 40.85px;
     background: #FF6700;
     border-radius: 28px;
-    font-size: 13px;
+    font-size: 12px;
     border: none; /* Убираем границу */
     color: white;
 
@@ -269,4 +263,26 @@ body {
 .ingridientsForPizza:hover {
     background: #fba56c;
     cursor: pointer; 
+}
+
+.size-options-for-pizza{
+  padding-top: 20px;
+  margin-right: 60px;
+}
+
+.cs-select {
+    padding: 10px;
+    font-size: 14px;
+    border: 2px solid #FF6700;
+    border-radius: 20px;
+    background-color: #f8f8f8; /* Цвет фона выпадающего списка */
+    color: #333; /* Цвет текста в выпадающем списке */
+}
+.OPLATA {
+    padding: 10px;
+    font-size: 14px;
+    border: 2px solid #FF6700;
+    border-radius: 20px;
+    background-color: #f8f8f8; /* Цвет фона выпадающего списка */
+    color: #333; /* Цвет текста в выпадающем списке */
 }
