@@ -151,14 +151,99 @@ class MenuView(django.views.View):
         if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
             if request.user.is_authenticated:
                 user = request.user
-                base_product = products.models.BaseProduct.objects.get(pk=pk)
-                ordered_product = products.models.OrderedProduct.objects.create(
-                    base_product=base_product,
-                )
-                user.cart.products.add(ordered_product)
+                cart = user.cart
+                try:
+                    cart.change_product_quantity("+1", base_product__id=pk, size="medium")
+                except django.core.exceptions.ObjectDoesNotExist:
+                    base_product = products.models.BaseProduct.objects.get(pk=pk)
+                    ordered_product = products.models.OrderedProduct.objects.create(
+                        base_product=base_product,
+                    )
+                    cart.add_product(ordered_product)
                 return django.http.JsonResponse({"success": "Товар успешно добавлен в корзину"})
             else:
                 return django.http.JsonResponse({"error": "Чтобы добавить товар в корзину, сначала зарегистрируйтесь"})
 
         else:
             return django.http.JsonResponse({'error': 'Invalid request'})
+
+
+class CartView(django.views.View):
+    def post(self, request, *args, **kwargs):
+        data = request.POST
+        if data.get("action") == "update_quantity":
+            cart = request.user.cart
+            cart.change_product_quantity(int(data.get("quantity")), id=data.get("product_id"))
+            return django.http.JsonResponse({"success": "Количество изменено", "amount": cart.products_sum})
+
+        elif data.get("action") == "update_size":
+            cart = request.user.cart
+            product = cart.products.all().get(id=int(data.get("product_id")))
+            new_size = data.get("size")
+            old_product_card = {"card_id": product.id, "action": "edit", "html": ""}
+            new_product_card = {"card_id": 0, "action": "edit", "html": ""}
+
+            try:
+                new_product = cart.change_product_quantity(
+                    "+1",
+                    return_product=True,
+                    base_product=product.base_product,
+                    size=new_size
+                )
+
+                new_product_card["card_id"] = new_product.id
+                new_product_card["action"] = "edit"
+                new_product_card["html"] = django.shortcuts.render(
+                        request,
+                        "includes/cart_product_card.html",
+                        {"product": new_product}
+                    ).content.decode('utf-8')
+            except django.core.exceptions.ObjectDoesNotExist:
+                new_product = products.models.OrderedProduct.objects.create(
+                    base_product=product.base_product,
+                    size=new_size,
+                )
+                new_product.added_ingredient.set(product.added_ingredient.all())
+                new_product.removed_ingredient.set(product.removed_ingredient.all())
+                new_product.save()
+                cart.add_product(new_product)
+
+                new_product_card["card_id"] = new_product.id
+                new_product_card["action"] = "add"
+                new_product_card["html"] = django.shortcuts.render(
+                    request,
+                    "includes/cart_product_card.html",
+                    {"product": new_product}
+                ).content.decode('utf-8')
+
+            if product.quantity == 1:
+                product.delete()
+
+                old_product_card["action"] = "delete"
+            else:
+                cart.change_product_quantity("-1", product=product)
+
+                old_product_card["action"] = "edit"
+                old_product_card["html"] = django.shortcuts.render(
+                        request,
+                        "includes/cart_product_card.html",
+                        {"product": product}
+                    ).content.decode('utf-8')
+            return django.http.JsonResponse(
+                {
+                    "success": "Размер изменен успешно",
+                    "old_card": old_product_card,
+                    "new_card": new_product_card,
+                    "amount": cart.products_sum,
+                }, )
+        elif data.get("action") == "delete product":
+            cart = request.user.cart
+            product = products.models.OrderedProduct.objects.get(id=data.get("product_id"))
+            cart.remove_product(product)
+            print("удаляем")
+            if not product.carts.all():
+                product.delete()
+                print(product)
+            return django.http.JsonResponse({"success": "Продукт успешно удален", "amount": cart.products_sum})
+        else:
+            return django.http.JsonResponse({"error": "Invalid request"})

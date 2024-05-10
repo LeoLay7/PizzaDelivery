@@ -26,7 +26,7 @@
         <a href="#sweet" class="product-type">Десерты</a>
     </div>
     <div class="name">
-        <a><button class="BIN">Корзина</button></a>
+        <a href="{% url 'cart:user_cart' request.user.id %}"><button class="BIN">Корзина</button></a>
     </div>
     <div class="name">
         {% if request.user.is_authenticated %}

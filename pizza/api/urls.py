@@ -28,6 +28,11 @@ menu = [
     django.urls.path("add_product/<int:pk>/", api.views.MenuView.as_view(), name="add_product"),
 ]
 
+cart = [
+    django.urls.path("update_cart/", api.views.CartView.as_view(), name="update_cart")
+]
+
 urlpatterns += profile_address
 urlpatterns += profile_cards
 urlpatterns += menu
+urlpatterns += cart

@@ -103,6 +103,22 @@ z-index: -1;
     border-radius: 70px;
 }
 
+.menu-button4 {
+    position: absolute;
+    width: 145.76px;
+    height: 41.4px;
+    left: 1500px;
+    top: 40px;
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 39px;
+    color: #FBF7F3;
+    background: #FF6700;
+    border: 2px solid #EB981B;
+    border-radius: 70px;
+}
 
 
 

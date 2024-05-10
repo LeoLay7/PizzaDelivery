@@ -67,6 +67,9 @@ class BaseProduct(django.db.models.Model):
     def get_ingredients(self):
         return ", ".join([str(ingredient) for ingredient in self.ingredients.all()]).capitalize()
 
+    def get_sizes(self):
+        return self.product_type.sizes
+
 
 class OrderedProduct(django.db.models.Model):
     base_product = django.db.models.ForeignKey(
@@ -89,6 +92,19 @@ class OrderedProduct(django.db.models.Model):
         verbose_name="размер",
         null=True,
     )
+    quantity = django.db.models.IntegerField(
+        verbose_name="количество",
+        default=1,
+    )
+    price = django.db.models.IntegerField(
+        default=0,
+        verbose_name="цена",
+    )
 
     def __str__(self):
-        return self.base_product.name
+        return f"{self.base_product.name} {self.quantity} {self.id}"
+
+    def save(self, *args, **kwargs):
+        if not self.price:
+            self.price = int(self.base_product.prices[self.size])
+        return super().save(*args, **kwargs)

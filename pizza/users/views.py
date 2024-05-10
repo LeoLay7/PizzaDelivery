@@ -36,8 +36,3 @@ class ProfileView(django.views.generic.UpdateView):
 
     def get_object(self, queryset=None):
         return users.models.User.objects.user_profile_info(self.kwargs["pk"], profile_form=True)
-
-
-class AddAddressView(django.views.View):
-    def post(self):
-        pass

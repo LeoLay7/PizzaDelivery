@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 
 from dotenv import load_dotenv
+import django.urls
 
 load_dotenv()
 
@@ -116,5 +117,8 @@ MEDIA_ROOT = BASE_DIR / "media"
 MEDIA_URL = "/media/"
 
 LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = django.urls.reverse_lazy("login")
+LOGOUT_URL = django.urls.reverse_lazy("logout")
+LOGOUT_REDIRECT_URL = django.urls.reverse_lazy("login")
 
 

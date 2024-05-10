@@ -1,0 +1,34 @@
+<div id="product_{{ product.id }}">
+    <img src="{{ product.base_product.image.url }}" style="width: 300px;">
+    {{ product.base_product.name }}
+    <span id="price_{{ product.id }}">{{ product.price }}</span>P
+    {{ product.base_product.get_ingredients }}
+    <div>
+        <form id="quantity-form-{{ product.id }}" method="post">
+            {% csrf_token %}
+            <button type="button" onclick="updateQuantity('{{ product.id }}', -1)">-</button>
+            <span id="quantity_{{ product.id }}">{{ product.quantity }}</span>
+            <button type="button" onclick="updateQuantity('{{ product.id }}', 1)">+</button>
+            <input type="hidden" name="product_id" value="{{ product.id }}">
+        </form>
+    </div>
+
+    <form id="size-form-{{ product.id }}" method="post">
+        {% csrf_token %}
+        <select id="size-select_{{ product.id }}" name="size">
+            {% for size, info in product.base_product.get_sizes.items %}
+                {% if size == product.size %}
+                    <option value="{{ size }}" selected>{{ info }}</option>
+                {% else %}
+                    <option value="{{ size }}">{{ info }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+    </form>
+
+    <form id="delete-form-{{ product.id }}">
+        {% csrf_token %}
+        <a class="btn btn-primary" onclick="deleteProduct({{ product.id }})">х</a>
+    </form>
+    <hr>
+</div>
