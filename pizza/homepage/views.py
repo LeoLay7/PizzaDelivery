@@ -6,3 +6,4 @@ import products.models
 
 class HomepageView(django.views.generic.TemplateView):
     template_name = "homepage/home.html"
+
