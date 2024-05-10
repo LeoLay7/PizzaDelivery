@@ -11,7 +11,12 @@ class Order(django.db.models.Model):
     user = django.db.models.ForeignKey(
         users.models.User,
         on_delete=django.db.models.CASCADE,
+        related_name="orders",
         verbose_name="пользователь"
+    )
+    price = django.db.models.IntegerField(
+        verbose_name="сумма заказа",
+        null=True,
     )
     products = django.db.models.ManyToManyField(
         products.models.OrderedProduct,
@@ -28,15 +33,18 @@ class Order(django.db.models.Model):
         verbose_name="адрес",
         null=True
     )
-    payment_method = django.db.models.ForeignKey(
-        payment.models.PaymentMethod,
+    card = django.db.models.ForeignKey(
+        payment.models.Card,
         on_delete=django.db.models.SET_NULL,
         verbose_name="способ оплаты",
         null=True
     )
     date = django.db.models.DateField(verbose_name="дата заказа")
     to_time = django.db.models.TimeField(verbose_name="доставка ко времени")
-    comment = django.db.models.TextField(verbose_name="комментарий")
+    comment = django.db.models.TextField(verbose_name="комментарий", blank=True, null=True,)
+
+    def __str__(self):
+        return f"{self.user.name} {self.price} {self.address}"
 
 
 class OrderStatusLog(django.db.models.Model):

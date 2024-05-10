@@ -1,7 +1,7 @@
 import django.contrib.auth.models
 import phonenumber_field.modelfields
+import django.core.exceptions
 import django.db.models
-
 
 import users.managers
 
@@ -9,7 +9,8 @@ import users.managers
 class Address(django.db.models.Model):
     address = django.db.models.CharField(max_length=300, verbose_name="адрес")
 
-
+    def __str__(self):
+        return self.address
 
 
 class User(django.contrib.auth.models.AbstractUser):
@@ -17,7 +18,6 @@ class User(django.contrib.auth.models.AbstractUser):
     surname = django.db.models.CharField(max_length=30, verbose_name="фамилия", blank=True)
     phone = phonenumber_field.modelfields.PhoneNumberField(
         region="RU",
-        unique=True,
         verbose_name="телефон",
         blank=True,
     )
@@ -28,7 +28,6 @@ class User(django.contrib.auth.models.AbstractUser):
     tg_token = django.db.models.CharField(
         max_length=40,
         verbose_name="имя в телеграм",
-        unique=True,
         blank=True,
     )
     addresses = django.db.models.ManyToManyField(
@@ -42,5 +41,15 @@ class User(django.contrib.auth.models.AbstractUser):
 
     objects = users.managers.UserManager()
 
+    def clean(self):
+        super().clean()
+        if self.phone:
+            if User.objects.filter(phone=self.phone).exclude(pk=self.pk).exists():
+                raise django.core.exceptions.ValidationError({"phone": "Этот номер телефона уже используется"})
+        if self.tg_token:
+            if User.objects.filter(tg_token=self.tg_token).exclude(pk=self.pk).exists():
+                raise django.core.exceptions.ValidationError({"tg_token": "Аккаунт с таким логином уже существует"})
+        self.username = self.email
+
     def __str__(self):
-        return f"{self.name} {self.surname}"
+        return f"{self.email} {self.name} {self.surname}"

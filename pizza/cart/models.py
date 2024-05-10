@@ -8,6 +8,7 @@ class Cart(django.db.models.Model):
     user = django.db.models.OneToOneField(
         users.models.User,
         on_delete=django.db.models.CASCADE,
+        related_name="cart",
     )
     products = django.db.models.ManyToManyField(
         products.models.OrderedProduct,

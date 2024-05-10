@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Профиль{%endblock %}
+
+{% block content %}
+<div class="container">
+    ПРОФИЛЬ
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Изменить</button>
+    </form>
+    <hr>
+    <div style="display: flex;">
+        <p>ADDRESSES</p>
+        <button id="address_btn" class="btn btn-primary">Добавить</button>
+    </div>
+    <div id="addresses_list">
+        {% for address in user.addresses.all %}
+            {% include 'includes/profile_address_card.html' %}
+        {% endfor %}
+    </div>
+    <div id="address_form_container"> </div> {# для формы #}
+
+    <hr>
+    <div style="display: flex;">
+        <p>PAYMENT</p>
+        <button id="card_btn" class="btn btn-primary">Добавить</button>
+    </div>
+    <div id="cards_list">
+        {% for card in user.cards.all %}
+            {% include 'includes/profile_card_card.html' %}
+        {% endfor %}
+    </div>
+    <div id="card_form_container"> </div> {# для формы #}
+
+    <hr>
+    <p>ВАШИ ЗАКАЗЫ</p>
+    {% for order in user.orders.all %}
+        {% include 'includes/profile_order_card.html' %}
+    {% endfor %}
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    {% include 'includes/profile_scripts.html' %}
+</div>
+{% endblock %}
