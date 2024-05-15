@@ -8,9 +8,6 @@ class UserManager(BaseUserManager):
     for authentication instead of usernames.
     """
     def create_user(self, email, password, **extra_fields):
-        """
-        Create and save a user with the given email and password.
-        """
         import cart.models
         if not email:
             raise ValueError(_("The Email must be set"))
@@ -36,3 +33,13 @@ class UserManager(BaseUserManager):
         if extra_fields.get("is_superuser") is not True:
             raise ValueError(_("Superuser must have is_superuser=True."))
         return self.create_user(email, password, **extra_fields)
+
+    def user_profile_info(self, pk, profile_form=False):
+        if profile_form:
+            return self.only("pk", "name", "surname", "phone", "email", "tg_token").get(pk=pk)
+        return (
+            self.filter(pk=pk)
+            .prefetch_related("addresses", "cards", "orders")
+            .only("addresses", "cards", "orders")
+            .first()
+        )

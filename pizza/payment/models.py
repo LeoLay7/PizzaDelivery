@@ -1,18 +1,14 @@
 import django.db.models
 
-
 import users.models
 
 
-class PaymentService(django.db.models.Model):
-    name = django.db.models.CharField(max_length=30, verbose_name="название")
-    template_info = django.db.models.JSONField(verbose_name="шаблон информации")
-
-
-class PaymentMethod(django.db.models.Model):
-    user = django.db.models.ForeignKey(users.models.User, on_delete=django.db.models.CASCADE)
-    service = django.db.models.ForeignKey(
-        PaymentService,
-        on_delete=django.db.models.CASCADE,
+class Card(django.db.models.Model):
+    card_users = django.db.models.ManyToManyField(
+        users.models.User,
+        related_name="cards",
     )
-    info = django.db.models.JSONField(verbose_name="информация")
+    last_numbers = django.db.models.CharField(max_length=20)
+
+    def __str__(self):
+        return f"{self.last_numbers}"

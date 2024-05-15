@@ -16,22 +16,29 @@ body {
     cursor: pointer; 
 }
 
-  
+.products {
+    padding-top: 70px;
+}
+
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(3, fr); /* 3 колонки */
+    grid-template-columns: repeat(3, 280px); /* Ширина каждой колонки */
+    grid-gap: 230px; /* Расстояние между столбцами */
+    padding-left: 150px; /* Отступ слева */
+    padding-bottom: 150px;
+    padding-top: 30px;
+    grid-auto-rows: 280px; /* Высота каждой строки */
+}
 
-    grid-template-columns: 280px 280px 280px; /* Ширина каждой колонки */
-    grid-template-rows: 280px 280px 280px 280px 280px 280px; /* Высота каждой строки */
-    grid-gap: 230px; /* Отступ между элементами сетки */
-    grid-row-gap: 280px;
-    padding-left: 100px;
-    padding-top: 100px;
+.product_type_label {
+    padding-left: 150px;
+    font-size: 35px;
+    font-weight: bold;
 }
 
 .name-grid {
     display: grid;
-    grid-template-columns: 310px 150px 150px 150px 150px 600px; /* Определение 6 столбцов с определенной шириной */
+    grid-template-columns: 310px 200px 200px 200px 200px 400px 150px; /* Определение 7 столбцов с определенной шириной */
     grid-template-rows: 108px; /* Определение высоты каждой строки */
     align-items: center;
     padding-top: 32px;
@@ -52,24 +59,12 @@ body {
    
   
 }
-.PIZZA{
-    position: fixed;
-    top: 20px;
 
-
-}
-.SWEET{
+.product-type{
     position: fixed;
     top: 20px;
-}
-.DRINK{
-    position: fixed;
-    top: 20px;
-}
-.SNACK{
-    position: fixed;
-    top: 20px;
-
+    text-decoration: none; /* Убирает подчеркивание ссылки */
+    color: inherit; /* Устанавливает цвет текста ссылки таким же, как у родительского элемента */
 }
 
 .DRINK:hover {
@@ -111,10 +106,9 @@ body {
   
 .bin img{
     position: absolute;
-    width: 31.97px;
-    height: 48.18px;
-    transform: matrix(-0.01, 1, -1, 0, 0, 0);
-    background: rgba(226, 158, 94, 0.64);
+    width: 40.97px;
+    height: 40.18px;
+    background: rgba(225, 141, 63, 0.64);
     border-radius: 25px;
 
 
@@ -141,11 +135,24 @@ body {
     width: 203px;
     height: 108px;
 }
+<<<<<<< HEAD:pizza/static/css/menu2.css
+=======
+.BIN {
+    width: 100.33px;
+    height: 60.85px;
+    background: #FF6700;
+    border-radius: 28px;
+    font-size: 19px;
+    border: none; /* Убираем границу */
+    color: white;
+    font-weight: bold;
+}
+>>>>>>> 9379a8b0868bad8f49daac65d29d104ca449ed9d:pizza/static/css/menu.css
 
 .custom-box {
     position: fixed;
  
-    width: 800px;
+    width: 950px;
     height: 80px;
     left: 330px;
     top: -10px;
@@ -153,4 +160,3 @@ body {
     border-radius: 20px; /* Задаем радиус скругления углов */
     z-index: 1;
 }
-
