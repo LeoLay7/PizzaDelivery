@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    {% load static %}
+  {% load static %}
     <title>Главная страница</title>
-    <link rel="stylesheet" href="{% static 'css/homepage.css'%}">
-    
+
+    <link rel="stylesheet" href="{% static 'css/homepage1.css'%}">
 </head>
 <body>
-
-    <div class="custom-box">
-        <a href="index2.html" class="menu-button">Наше меню</a>
-      </div>
-      
-    
-    <button class="menu-button2">войти</button>
- 
-    <img src="{% static 'dev/mainphoto.png' %}" class="photostyle">
-    <img src="{% static 'img/homepage/people.png' %}" class="photostyle0">
-    <img src="{% static 'img/homepage/pizza.png' %}" class="photostyle2">
-    <p class="Moscow">📍Москва</p>
-    <p class="sale">Акции</p>
-    <p class="about">О нас</p>
-</body>
-</html>
+    <div class="name-grid">
+        <div class="mainphoto">
+            <img src="{% static 'dev/mainphoto.png' %}">
+        </div>
+        <p class="Moscow">📍Москва</p>
+        <a><button class="menu">Войти</button></a>
+        <a><button class="menu">Профиль</button></a>
+        <a><button class="menu">Акции</button></a>
+    </div>
+    <div class="photo-grid">
+        <div class="photo1">
+            <img src="{% static 'img/homepage/people.png' %}" class="photostyle1">
+        </div>
+        <div class="photo2">
+            <img src="{% static 'img/homepage/pizza.png' %}" class="photostyle2">
+        </div>
+    </div>
+    <div class="photo2-grid">
+        <div class="ourmenu">
+            <a><button class="buttonourmenu">Наше меню</button></a>
+        </div>
+    </div>
