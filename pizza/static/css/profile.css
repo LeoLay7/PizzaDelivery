@@ -1,0 +1,70 @@
+body {
+    background: #fbd7a2;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.profile_data {
+    margin-left: 30px;
+}
+
+.addresses {
+    margin-left: 20px;
+    display: flex;
+}
+
+.payment {
+    margin-left: 20px;
+    display: flex;
+}
+
+.orders {
+    margin-left: 20px;
+}
+
+.btn {
+    background-color: #FF6700;
+    color: rgba(255, 255, 255, 1);
+    border: 20px;
+    border-radius: 10%;
+    font-size: 14px;
+}
+
+.btn-primary {
+    margin: 10px;
+}
+
+.btn-danger {
+    margin-left: 10px;
+}
+
+.container {
+    border: 3px solid;
+    border-color: #FF6700;
+    margin-left: 400px;
+    margin-right: 400px;
+}
+
+.data_form {
+    display: flex;
+    margin-left: 60px;
+}
+
+.order_card {
+    
+}
+
+
+.empty_alert {
+    margin-left: 40px;
+}
+
+input {
+    border-radius: 10px;
+    margin-left: 10px;
+    background-color: rgba(255, 255, 255, 0);
+    border-color: #FF6700;
+}
+
+input:focus {
+    outline: 0;
+}
