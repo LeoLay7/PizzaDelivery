@@ -1,4 +1,11 @@
-<div>
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+
+<div class="order_card">
     <li>Дата: {{ order.date }}<br>Сумма: {{ order.price }}<br>Адрес: {{ order.address.address }}</li>
     <a href="{% url 'orders:order' order.pk %}" class="btn btn-primary">Подробнее</a>
 </div>

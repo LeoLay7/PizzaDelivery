@@ -3,31 +3,40 @@
 <head>
     {% load static %}
     <title>Главная страница</title>
+
     <link rel="stylesheet" href="{% static 'css/homepage.css'%}">
-    
 </head>
 <body>
-
-    <div class="custom-box">
-        <a href="{% url 'products:menu' %}" class="menu-button">Наше меню</a>
-      </div>
-      
-    {% if request.user.is_authenticated %}
-        <a href="{% url 'users:profile' request.user.id %}"><button class="menu-button2">Профиль</button></a>
-        <a href="{% url 'cart:user_cart' request.user.id %}"><button class="menu-button3">Корзина</button></a>
-        <form style="left: 1300px; top: 40px;" method="POST" action="{% url 'logout' %}">
-            {% csrf_token %}
-            <button class="menu-button4" type="submit">Выйти</button>
-        </form>
-    {% else %}
-        <a href="{% url 'login' %}"><button class="menu-button2">Войти</button></a>
-    {% endif %}
-
-    <img src="{% static 'dev/mainphoto.png' %}" class="photostyle">
-    <img src="{% static 'img/homepage/people.png' %}" class="photostyle0">
-    <img src="{% static 'img/homepage/pizza.png' %}" class="photostyle2">
+<div class="name-grid">
+    <div class="mainphoto">
+        <img src="{% static 'dev/mainphoto.png' %}">
+    </div>
     <p class="Moscow">📍Москва</p>
-    <p class="sale">Акции</p>
-    <p class="about">О нас</p>
+    <a>
+        <button class="menu">Войти</button>
+    </a>
+    <a>
+        <button class="menu">Профиль</button>
+    </a>
+    <a>
+        <button class="menu">Акции</button>
+    </a>
+</div>
+<div class="photo-grid">
+    <div class="photo1">
+        <img src="{% static 'img/homepage/people.png' %}" class="photostyle1">
+    </div>
+    <div class="photo2">
+        <img src="{% static 'img/homepage/pizza.png' %}" class="photostyle2">
+    </div>
+</div>
+<div class="photo2-grid">
+    <div class="ourmenu">
+        <a>
+            <button class="buttonourmenu">Наше меню</button>
+        </a>
+    </div>
+</div>
 </body>
 </html>
+

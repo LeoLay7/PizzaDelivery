@@ -1,0 +1,107 @@
+@import url(null.css);
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
+body {
+    background-color: #BF7A53;
+    width: 100%;
+    height: 100%;
+}
+
+
+.content{
+    padding: 10vh 0 10vh 0;
+    max-width: 80vw;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.pizza{
+    font-family: 'Open sans';
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 37px;
+    max-width: 562px;
+    padding: 24px 0 0 0;
+    text-align: center;
+    background: #FFFFFF;
+    border-radius: 50px;
+}
+
+.pizza-image{
+    margin-bottom: 100px;
+    max-width: 412px;
+    max-height: 412px;
+}
+
+.save-button{
+    text-align: center;
+    align-items: center;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 37px;
+    background: #3D2525;
+    border-radius: 0px 0px 50px 50px;
+    padding: 81px 200px 110px 183px;
+    color: #FFF;
+
+}
+
+.edit__block{
+    font-family: 'Open sans';
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 37px;
+    max-width: 776px;
+    text-align: center;
+}
+
+.edit__block_delete{
+    padding: 12px 220px;
+    background: #FAED7F;
+    border-radius: 50px;
+    margin-bottom: 24px;
+}
+
+.edit__block_add{
+    padding: 12px 220px;
+    background: #FAED7F;
+    border-radius: 50px;
+}
+
+.grid{
+    margin-top: 24px;
+    display: flex;
+    margin-bottom: 24px;
+}
+
+.grid__element{
+    font-size: 24px;
+    background-color: #FFF;
+    max-width: 190px;
+    border-radius: 50px;
+    padding: 15px 0 0 0;
+    margin-right: 20px;
+    text-align: center;
+}
+
+.grid__add{
+    margin-top: 24px;
+    display: flex;
+}
+
+.grid__element_photo{
+    max-width: 110px;
+}
+
+.grid__element_input{
+    text-align: center;
+    padding: 13px 0;
+    border-radius: 0 0 50px 50px;
+    font-family: 'Open sans';
+    color: #FFF;
+    background-color: #3D2525;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 37px;
+}
