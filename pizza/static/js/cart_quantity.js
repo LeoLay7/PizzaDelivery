@@ -16,6 +16,7 @@
         contentType: false,
         success: function(response) {
           $('#amount').text(response.amount);
+          $('#amount_' + productId).text(response.product_amount);
           console.log('Изменение прошло успешно');
         },
         error: function(xhr, status, error) {

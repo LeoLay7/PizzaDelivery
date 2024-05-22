@@ -1,0 +1,29 @@
+<div id="product_{{ product.id }}" class="item">
+
+    <div class="image">
+        <img src="{{ product.base_product.image.url }}" alt=""/>
+    </div>
+
+    <div class="description">
+        <span>{{ product.base_product.name }}</span>
+        <span>{{ product.base_product.get_ingredients }}</span>
+        {% if product.added_ingredient.exists %}
+            <span>ДОП: {{ product.get_added_ingredients }}</span>
+        {% endif %}
+        {% if product.removed_ingredient.exists %}
+            <span>БЕЗ: {{ product.get_removed_ingredients }}</span>
+        {% endif %}
+    </div>
+
+    <div class="quantity">
+        <p>Кол-во:</p>
+        <span id="quantity_{{ product.id }}">{{ product.quantity }}</span>
+    </div>
+
+    <div>
+        <p>Размер</p>
+        <p>{{ product.size }}</p>
+    </div>
+
+    <div class="total-price">{{ product.price }}₽</div>
+</div>

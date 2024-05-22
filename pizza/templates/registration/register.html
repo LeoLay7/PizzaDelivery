@@ -22,19 +22,28 @@
 
             <form method="POST">
                 {% csrf_token %}
-
+                {% if form.errors %}
+                {% for field in form %}
+                {% for error in field.errors %}
+                <p> {{ error }} </p>
+                {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                <p> {{ error }} </p>
+                {% endfor %}
+                {% endif %}
                 <div class="field-wrap">
-                    <p>Почта</p>
+                    <p>{{ form.email.label }}</p>
                     {{ form.email }}
                 </div>
 
                 <div class="field-wrap">
-                    <p>Пароль</p>
+                    <p>{{ form.password1.label }}</p>
                     {{ form.password1 }}
                 </div>
 
                 <div class="field-wrap">
-                    <p>Пароль повторно</p>
+                    <p>{{ form.password2.label }}</p>
                     {{ form.password2 }}
                 </div>
 
@@ -72,8 +81,5 @@
     </div>
 
 </div>
-
-
-<script src="js/index.js"></script>
 
 {% endblock %}

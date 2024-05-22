@@ -12,7 +12,8 @@ class RegisterView(django.views.generic.FormView):
     form_class = users.forms.RegisterForm
 
     def form_valid(self, form):
-        form.save()
+        data = form.cleaned_data
+        users.models.User.objects.create_user(data["email"], data["password1"])
         return django.shortcuts.redirect("login")
 
     def get_success_url(self):

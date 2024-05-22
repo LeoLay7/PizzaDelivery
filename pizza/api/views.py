@@ -173,8 +173,18 @@ class CartView(django.views.View):
         data = request.POST
         if data.get("action") == "update_quantity":
             cart = request.user.cart
-            cart.change_product_quantity(int(data.get("quantity")), id=data.get("product_id"))
-            return django.http.JsonResponse({"success": "Количество изменено", "amount": cart.products_sum})
+            product = cart.change_product_quantity(
+                int(data.get("quantity")),
+                return_product=True,
+                id=data.get("product_id")
+            )
+            return django.http.JsonResponse(
+                {
+                    "success": "Количество изменено",
+                    "amount": cart.products_sum,
+                    "product_amount": product.amount(),
+                }
+            )
 
         elif data.get("action") == "update_size":
             cart = request.user.cart
@@ -188,7 +198,9 @@ class CartView(django.views.View):
                     "+1",
                     return_product=True,
                     base_product=product.base_product,
-                    size=new_size
+                    size=new_size,
+                    added_ingredients=product.added_ingredient.all(),
+                    removed_ingredients=product.removed_ingredient.all(),
                 )
 
                 new_product_card["card_id"] = new_product.id
@@ -217,6 +229,7 @@ class CartView(django.views.View):
                 ).content.decode('utf-8')
 
             if product.quantity == 1:
+                cart.remove_product(product)
                 product.delete()
 
                 old_product_card["action"] = "delete"
@@ -240,10 +253,8 @@ class CartView(django.views.View):
             cart = request.user.cart
             product = products.models.OrderedProduct.objects.get(id=data.get("product_id"))
             cart.remove_product(product)
-            print("удаляем")
             if not product.carts.all():
                 product.delete()
-                print(product)
             return django.http.JsonResponse({"success": "Продукт успешно удален", "amount": cart.products_sum})
         else:
             return django.http.JsonResponse({"error": "Invalid request"})
