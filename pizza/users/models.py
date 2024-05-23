@@ -8,6 +8,13 @@ import users.managers
 
 class Address(django.db.models.Model):
     address = django.db.models.CharField(max_length=300, verbose_name="адрес")
+    entrance = django.db.models.CharField(verbose_name="подъезд", max_length=5, null=True)
+    floor = django.db.models.CharField(verbose_name="этаж", max_length=5, null=True)
+    flat = django.db.models.CharField(verbose_name="квартира", max_length=5, null=True)
+
+    class Meta:
+        verbose_name = "адрес"
+        verbose_name_plural = "адреса"
 
     def __str__(self):
         return self.address
@@ -40,6 +47,10 @@ class User(django.contrib.auth.models.AbstractUser):
     REQUIRED_FIELDS = []
 
     objects = users.managers.UserManager()
+
+    class Meta:
+        verbose_name = "пользователь"
+        verbose_name_plural = "пользователи"
 
     def clean(self):
         super().clean()

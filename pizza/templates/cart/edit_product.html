@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load startswith %}
+
+{% block title %}Редактировать{% endblock %}
+
+{% block links %}
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Мой самый первый сайт">
+<title>Заказ пиццы</title>
+<link rel="stylesheet" href="{% static 'css/edit_product.css' %}">
+{% endblock %}
+
+{% block content %}
+<form method="POST">
+    <div class="content">
+        <div class="edit">
+            {% csrf_token %}
+            {% if form.errors %}
+            {% for field in form %}
+            {% for error in field.errors %}
+            <p> {{ error }} </p>
+            {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+            <p> {{ error }} </p>
+            {% endfor %}
+            {% endif %}
+            <div class="edit__block">
+                <div class="edit__block_delete">
+                    Удалить из пиццы
+                </div>
+                <div class="grid">
+                    {% for field in form %}
+                    {% if field.name|startswith:'remove_' %}
+                    {% with ingredient=form.ingredients|get:field.name %}
+                    {% include 'includes/edit_ingredient_card.html' %}
+                    {% endwith %}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="edit__block">
+                <div class="edit__block_delete">
+                    Добавить в пиццу
+                </div>
+                <div class="grid">
+                    {% for field in form %}
+                    {% if field.name|startswith:'add_' %}
+                    {% with ingredient=form.ingredients|get:field.name %}
+                    {% include 'includes/edit_ingredient_card.html' %}
+                    {% endwith %}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="pizza">
+            {{ product.base_product.name }}
+            <img src="{{ product.base_product.image.url }}" class="pizza-image" alt="pizza image">
+            <p>{{ form.quantity.label }} {{ form.quantity }}</p>
+            <button href="#" class="save-button">Сохранить</button>
+        </div>
+    </div>
+</form>
+{% endblock %}
