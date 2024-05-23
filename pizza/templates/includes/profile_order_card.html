@@ -6,6 +6,12 @@
 
 
 <div class="order_card">
-    <li>Дата: {{ order.date }}<br>Сумма: {{ order.price }}<br>Адрес: {{ order.address.address }}</li>
+    <p class="order_date_form">{{ order.date }}</p>
+
+    <div class="order_address_price">
+        <p class="order_address_form">{{ order.address.address }}</p>
+        <p class="order_price_form">{{ order.price }}</p>
+    </div>
+
     <a class="btn btn-primary">Подробнее</a>
 </div>

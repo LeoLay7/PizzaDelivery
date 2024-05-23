@@ -135,19 +135,6 @@ body {
     width: 203px;
     height: 108px;
 }
-<<<<<<< HEAD:pizza/static/css/menu2.css
-=======
-.BIN {
-    width: 100.33px;
-    height: 60.85px;
-    background: #FF6700;
-    border-radius: 28px;
-    font-size: 19px;
-    border: none; /* Убираем границу */
-    color: white;
-    font-weight: bold;
-}
->>>>>>> 9379a8b0868bad8f49daac65d29d104ca449ed9d:pizza/static/css/menu.css
 
 .custom-box {
     position: fixed;

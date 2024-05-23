@@ -8,10 +8,18 @@
 {% endblock %}
 
 {% block content %}
+<div class="shapka">
+    <div class="mainphoto">
+        <a href="{% url 'homepage:home' %}"><img src="{% static 'dev/mainphoto.png' %}"></a>
+    </div>
+    <p class="Moscow">📍Москва</p>
+    <p class="sale">Акции</p>
+    <p class="about">О нас</p>
+</div>
 
-<div class="container">
-    <p style="margin: 10px;">ПРОФИЛЬ</p>
+<div class="container">    
     <div class="profile_data">
+        <p style="font-size: 20px;">ПРОФИЛЬ</p>
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
