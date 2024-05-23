@@ -11,16 +11,29 @@
     <div class="mainphoto">
         <img src="{% static 'dev/mainphoto.png' %}">
     </div>
-    <p class="Moscow">📍Москва</p>
-    <a>
-        <button class="menu">Войти</button>
-    </a>
-    <a>
-        <button class="menu">Профиль</button>
-    </a>
-    <a>
-        <button class="menu">Акции</button>
-    </a>
+
+    {% if request.user.is_authenticated %}
+        <a href="{% url 'sales:sales' %}">
+            <button class="menu">Акции</button>
+        </a>
+        <a href="{% url 'cart:user_cart' request.user.id %}">
+            <button class="menu">Корзина</button>
+        </a>
+        <a href="{% url 'users:profile' request.user.id %}">
+            <button class="menu">Профиль</button>
+        </a>
+        <form method="POST" action="{% url 'logout' %}" class="menu">
+            {% csrf_token %}
+            <button type="submit" class="menu">Выйти</button>
+        </form>
+    {% else %}
+        <p></p>
+        <p></p>
+        <p></p>
+        <a href="{% url 'login' %}">
+            <button class="menu">Войти</button>
+        </a>
+    {% endif %}
 </div>
 <div class="photo-grid">
     <div class="photo1">
@@ -32,7 +45,7 @@
 </div>
 <div class="photo2-grid">
     <div class="ourmenu">
-        <a>
+        <a href="{% url 'products:menu' %}">
             <button class="buttonourmenu">Наше меню</button>
         </a>
     </div>

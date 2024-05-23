@@ -9,6 +9,10 @@ class Ingredient(django.db.models.Model):
     image = django.db.models.ImageField(upload_to="ingredients/", null=True, blank=True)
     add_price = django.db.models.PositiveSmallIntegerField(verbose_name="цена добавления в продукт")
 
+    class Meta:
+        verbose_name = "ингредиент"
+        verbose_name_plural = "ингредиент"
+
     def __str__(self):
         return self.name
 
@@ -20,6 +24,10 @@ class ProductType(django.db.models.Model):
     extra_fields = django.db.models.JSONField(verbose_name="доп. поля", blank=True, null=True)
     label = django.db.models.CharField(max_length=30, verbose_name="тип во мн. числе", null=True, )
     label_id = django.db.models.CharField(max_length=30, verbose_name="тип на анг. языке", null=True, )
+
+    class Meta:
+        verbose_name = "тип продукта"
+        verbose_name_plural = "Типы продуктов"
 
     def __str__(self):
         return self.name
@@ -69,6 +77,10 @@ class BaseProduct(django.db.models.Model):
 
     objects = products.managers.BaseProductManager()
 
+    class Meta:
+        verbose_name = "продукт"
+        verbose_name_plural = "продукты"
+
     def __str__(self):
         return self.name
 
@@ -83,6 +95,7 @@ class OrderedProduct(django.db.models.Model):
     base_product = django.db.models.ForeignKey(
         BaseProduct,
         on_delete=django.db.models.CASCADE,
+        related_name="ordered_products"
     )
     removed_ingredient = django.db.models.ManyToManyField(
         Ingredient,
@@ -112,6 +125,10 @@ class OrderedProduct(django.db.models.Model):
         default=0,
         verbose_name="цена добавленных ингредиентов",
     )
+
+    class Meta:
+        verbose_name = "заказанный продукт"
+        verbose_name_plural = "заказанные продукты"
 
     def __str__(self):
         return f"{self.base_product.name} {self.quantity} {self.id}"

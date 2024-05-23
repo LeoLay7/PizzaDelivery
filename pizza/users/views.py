@@ -2,6 +2,7 @@ import django.views.generic
 import django.shortcuts
 import django.views.generic.edit
 import django.urls
+import django.contrib.auth.mixins
 
 import users.forms
 import users.models
@@ -20,7 +21,7 @@ class RegisterView(django.views.generic.FormView):
         return django.shortcuts.reverse("login")
 
 
-class ProfileView(django.views.generic.UpdateView):
+class ProfileView(django.contrib.auth.mixins.LoginRequiredMixin, django.views.generic.UpdateView):
     template_name = "users/profile.html"
     form_class = users.forms.ProfileForm
     model = users.models.User

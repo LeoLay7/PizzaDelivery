@@ -6,6 +6,6 @@
 
 
 <div class="order_card">
-    <li>Дата: {{ order.date }}<br>Сумма: {{ order.price }}<br>Адрес: {{ order.address.address }}</li>
+    <li>Дата: {{ order.date|date:"d.m.Y H:i" }}<br>Сумма: {{ order.price }}<br>Адрес: {{ order.address.address }}</li>
     <a href="{% url 'orders:order' order.pk %}" class="btn btn-primary">Подробнее</a>
 </div>

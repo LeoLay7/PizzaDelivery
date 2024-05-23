@@ -4,7 +4,7 @@
 {% block title %}Корзина{% endblock %}
 
 {% block links %}
-
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
 <link rel="stylesheet" href="{% static 'css/bin.css'%}">
 {% endblock %}
 
@@ -18,23 +18,30 @@
     </a>
 </div>
 
-<div class="shopping-cart">
-    <!-- Title -->
-    <div class="title">
-        Корзина
+{% with products=cart.get_products %}
+    {% if products %}
+    <div class="shopping-cart">
+        <!-- Title -->
+        <div class="title">
+            Корзина
+        </div>
+
+        <div id="product-container">
+            {% for product in products %}
+                {% include 'includes/cart_product_card.html' %}
+            {% endfor %}
+        </div>
+        <div class="info">Cумма заказа: <span id="amount">{{ cart.products_sum }}</span></div>
+        <div class="oformit">
+            <a href="{% url 'cart:payment' request.user.id %}">
+                <button class="bottonOformit">Оформить заказ</button>
+            </a>
+        </div>
     </div>
-    <div id="product-container">
-        {% for product in cart.get_products %}
-            {% include 'includes/cart_product_card.html' %}
-        {% endfor %}
-    </div>
-    <div class="info">Cумма заказа: <span id="amount">{{ cart.products_sum }}</span></div>
-    <div class="oformit">
-        <a href="{% url 'cart:payment' request.user.id %}">
-            <button class="bottonOformit">Оформить заказ</button>
-        </a>
-    </div>
-</div>
+    {% else %}
+        <p class="text-center fw-bold">Вы еще ничего не заказали!</p>
+    {% endif %}
+{% endwith %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="{% static 'js/cart_quantity.js' %}"></script>
 <script src="{% static 'js/cart_delete_product.js' %}"></script>

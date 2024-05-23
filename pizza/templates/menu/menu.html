@@ -39,6 +39,14 @@
 
 
 <div class="products">
+    {% if recommended_products %}
+        <p class="product_type_label">Вы заказывали</p>
+        <div class="product-grid">
+            {% for product in recommended_products %}
+                {% include 'includes/product_card.html' %}
+            {% endfor %}
+        </div>
+    {% endif %}
     {% for product in products %}
         {% ifchanged product.product_type.name %}
         {% if not forloop.first %}

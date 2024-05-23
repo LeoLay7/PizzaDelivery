@@ -19,6 +19,6 @@ class ProfileForm(django.forms.ModelForm):
 class AddAddressForm(django.forms.ModelForm):
     class Meta:
         model = users.models.Address
-        fields = ["address"]
+        fields = ["address", "entrance", "floor", "flat"]
 
 

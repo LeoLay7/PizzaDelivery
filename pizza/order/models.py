@@ -49,6 +49,10 @@ class Order(django.db.models.Model):
 
     objects = order.managers.OrderManager()
 
+    class Meta:
+        verbose_name = "заказ"
+        verbose_name_plural = "заказы"
+
     def __str__(self):
         return f"{self.user.name} {self.price} {self.address}"
 
@@ -69,6 +73,10 @@ class OrderStatusLog(django.db.models.Model):
     time = django.db.models.DateTimeField(
         auto_now_add=True,
     )
+
+    class Meta:
+        verbose_name = "лог заказа"
+        verbose_name_plural = "логи заказов"
 
 
 @django.dispatch.receiver(django.db.models.signals.pre_save, sender=Order)

@@ -27,11 +27,11 @@ INSTALLED_APPS = [
     "products.apps.ProductsConfig",
     "homepage.apps.HomepageConfig",
     "cart.apps.CartConfig",
-    "about.apps.AboutConfig",
     "phonenumber_field",
     "users.apps.UsersConfig",
     "api.apps.ApiConfig",
-    "django_cleanup.apps.CleanupConfig"
+    "django_cleanup.apps.CleanupConfig",
+    "sales.apps.SalesConfig",
 ]
 
 MIDDLEWARE = [
@@ -95,7 +95,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "ru-ru"
 
 TIME_ZONE = 'Europe/Moscow'
 

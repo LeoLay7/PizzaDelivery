@@ -24,6 +24,10 @@ class Cart(django.db.models.Model):
 
     objects = cart.managers.CartManager()
 
+    class Meta:
+        verbose_name = "корзина"
+        verbose_name_plural = "корзины"
+
     def __str__(self):
         return f"{self.user.name} cart"
 

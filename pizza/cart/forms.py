@@ -1,7 +1,8 @@
 import django.forms
-import cart.tools
-
 import django.core.exceptions
+
+import cart.tools
+import products.models
 
 
 class CartPaymentForm(django.forms.Form):
@@ -34,6 +35,7 @@ class EditProductForm(django.forms.Form):
 
         removed_ingredients = product.removed_ingredient.all()
         added_ingredients = product.added_ingredient.all()
+        self.ingredients = {}
 
         for ingredient in product.base_product.can_delete.all():
             fieldname = "remove_" + str(ingredient.pk)
@@ -45,6 +47,7 @@ class EditProductForm(django.forms.Form):
             if ingredient in removed_ingredients:
                 data["initial"] = False
             self.fields[fieldname] = django.forms.BooleanField(**data)
+            self.ingredients[fieldname] = ingredient
 
         for ingredient in product.base_product.extra_ingredients.all():
             fieldname = "add_" + str(ingredient.pk)
@@ -56,6 +59,7 @@ class EditProductForm(django.forms.Form):
             if ingredient in added_ingredients:
                 data["initial"] = True
             self.fields[fieldname] = django.forms.BooleanField(**data)
+            self.ingredients[fieldname] = ingredient
 
         self.fields["quantity"] = django.forms.IntegerField(
             min_value=1,
@@ -72,6 +76,14 @@ class EditProductForm(django.forms.Form):
             if field.split("_")[0] in ["add", "remove"]:
                 data[field] = self.fields[field].initial
         return data
+
+    def get_ingredient_from_field(self, field_name):
+        try:
+            if "_" in field_name:
+                pk = int(field_name.split("_")[1])
+                return products.models.Ingredient.objects.get(pk=pk)
+        except (ValueError, products.models.Ingredient.DoesNotExist):
+            return None
 
     def clean(self):
         cleaned_data = super().clean()

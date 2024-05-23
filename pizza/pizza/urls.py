@@ -28,6 +28,7 @@ urlpatterns = [
     django.urls.path("api/", django.urls.include("api.urls")),
     django.urls.path("cart/", django.urls.include("cart.urls")),
     django.urls.path("order/", django.urls.include("order.urls")),
+    django.urls.path("sales/", django.urls.include("sales.urls"))
 ]
 
 if django.conf.settings.DEBUG:

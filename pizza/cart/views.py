@@ -2,6 +2,7 @@ import django.views.generic
 import django.http
 import django.shortcuts
 import django.core.exceptions
+import django.contrib.auth.mixins
 
 import cart.models
 import cart.forms
@@ -10,7 +11,7 @@ import users.models
 import order.models
 
 
-class CartView(django.views.generic.ListView):
+class CartView(django.contrib.auth.mixins.LoginRequiredMixin, django.views.generic.ListView):
     template_name = "cart/cart.html"
     model = cart.models.Cart
     context_object_name = "cart"
@@ -24,7 +25,7 @@ class CartView(django.views.generic.ListView):
         return cart.models.Cart.objects.get_cart(self.kwargs["pk"])
 
 
-class PaymentView(django.views.generic.FormView):
+class PaymentView(django.contrib.auth.mixins.LoginRequiredMixin, django.views.generic.FormView):
     form_class = cart.forms.CartPaymentForm
     template_name = "cart/payment.html"
 
@@ -66,18 +67,21 @@ class PaymentView(django.views.generic.FormView):
         return django.shortcuts.redirect("products:menu")
 
 
-class EditProductView(django.views.generic.UpdateView):
+class EditProductView(django.contrib.auth.mixins.LoginRequiredMixin, django.views.generic.UpdateView):
     model = products.models.OrderedProduct
     form_class = cart.forms.EditProductForm
     template_name = "cart/edit_product.html"
+    context_object_name = "product"
 
     def get_object(self, queryset=None):
         return self.model.objects.get(pk=self.kwargs["pk"])
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
-        kwargs["product"] = self.get_object()
+        obj = self.get_object()
+        kwargs["product"] = obj
         del kwargs["instance"]
+
         return kwargs
 
     def form_valid(self, form):

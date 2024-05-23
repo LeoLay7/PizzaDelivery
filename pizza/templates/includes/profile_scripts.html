@@ -45,6 +45,7 @@
                 contentType: false,
                 success: function(response){
                     alert(response.success);
+                    $("#empty_address").remove();
                     $("#address_form_container").empty(); // Скрываем форму после успешного добавления
                     $("#address_btn").text("Добавить"); // Возвращаем текст кнопки к исходному состоянию
 
@@ -136,6 +137,7 @@
                 processData: false,
                 contentType: false,
                 success: function(response){
+                    $("#empty_card").remove();
                     alert(response.success);
                     $("#card_form_container").empty(); // Скрываем форму после успешного добавления
                     $("#card_btn").text("Добавить"); // Возвращаем текст кнопки к исходному состоянию
