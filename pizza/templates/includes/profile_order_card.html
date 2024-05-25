@@ -13,5 +13,5 @@
         <p class="order_price_form">{{ order.price }}</p>
     </div>
 
-    <a class="btn btn-primary">Подробнее</a>
+    <a href="{% url 'orders:order' order.pk %}" class="btn btn-primary">Подробнее</a>
 </div>
