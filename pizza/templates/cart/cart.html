@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Корзина{% endblock %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+<link rel="stylesheet" href="{% static 'css/bin.css'%}">
+{% endblock %}
+
+{% block content %}
+<div class="name-grid">
+    <div class="mainphoto">
+        <a href="{% url 'homepage:home' %}"><img src="{% static 'dev/mainphoto.png' %}"></a>
+    </div>
+    <a href="{% url 'products:menu' %}">
+        <button class="menu">Меню</button>
+    </a>
+</div>
+
+{% with products=cart.get_products %}
+    {% if products %}
+    <div class="shopping-cart">
+        <!-- Title -->
+        <div class="title">
+            Корзина
+        </div>
+
+        <div id="product-container">
+            {% for product in products %}
+                {% include 'includes/cart_product_card.html' %}
+            {% endfor %}
+        </div>
+        <div class="info">Cумма заказа: <span id="amount">{{ cart.products_sum }}</span></div>
+        <div class="oformit">
+            <a href="{% url 'cart:payment' request.user.id %}">
+                <button class="bottonOformit">Оформить заказ</button>
+            </a>
+        </div>
+    </div>
+    {% else %}
+        <p class="text-center fw-bold">Вы еще ничего не заказали!</p>
+    {% endif %}
+{% endwith %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{% static 'js/cart_quantity.js' %}"></script>
+<script src="{% static 'js/cart_delete_product.js' %}"></script>
+<script>
+    $(document).ready(function() {
+      $('#product-container').on('change', 'select[name="size"]', function() {
+        var formId = $(this).closest('form').attr('id'); // Получаем id формы, содержащей select
+        var productId = formId.split('-')[2]; // Получаем product_id из id формы
+        var newSize = $(this).val(); // Получаем выбранный размер из элемента <select>
+
+        var formData = new FormData(); // Создаем объект FormData
+        formData.append('product_id', productId); // Добавляем product_id в объект formData
+        formData.append('size', newSize); // Добавляем size в объект formData
+        formData.append('action', 'update_size'); // Добавляем action в объект formData
+        formData.append('csrfmiddlewaretoken', $('input[name="csrfmiddlewaretoken"]').val()); // Добавляем CSRF-токен
+
+        $.ajax({
+          url: '/api/update_cart/',
+          type: 'POST',
+          data: formData,
+          processData: false, // Не обрабатываем данные (не преобразуем в строку)
+          contentType: false, // Не устанавливаем тип контента (передадим как есть)
+                success: function(response) {
+            // Удаляем старую карточку и добавляем новую вместо нее
+            if (response.old_card.action === 'delete' && response.new_card.action === 'add') {
+              $('#product_' + response.old_card.card_id).replaceWith(response.new_card.html);
+            }
+            // Удаляем старую карточку и изменяем новую
+            else if (response.old_card.action === 'delete' && response.new_card.action === 'edit') {
+              $('#product_' + response.old_card.card_id).remove();
+              $('#product_' + response.new_card.card_id).replaceWith(response.new_card.html);
+            }
+            // Изменяем старую и добавляем новую
+            else if (response.old_card.action === 'edit' && response.new_card.action === 'add') {
+              $('#product_' + response.old_card.card_id).replaceWith(response.old_card.html);
+              $('#product_' + response.old_card.card_id).after(response.new_card.html);
+            }
+            // Изменяем старую и изменяем новую
+            else if (response.old_card.action === 'edit' && response.new_card.action === 'edit') {
+              $('#product_' + response.old_card.card_id).replaceWith(response.old_card.html);
+              $('#product_' + response.new_card.card_id).replaceWith(response.new_card.html);
+            }
+            // Просто изменяем карточки
+            else {
+              if (response.old_card && response.old_card.html) {
+                $('#product_' + response.old_card.card_id).replaceWith(response.old_card.html);
+              }
+              if (response.new_card && response.new_card.html) {
+                $('#product_' + response.new_card.card_id).replaceWith(response.new_card.html);
+              }
+            }
+            $('#amount').text(response.amount);
+            console.log('Размер товара успешно обновлен');
+          },
+          error: function(xhr, status, error) {
+            console.error('Request failed:', status, error);
+          }
+        });
+      });
+    });
+
+</script>
+
+{% endblock %}

@@ -1,31 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-  {% load static %}
+    {% load static %}
     <title>Главная страница</title>
 
     <link rel="stylesheet" href="{% static 'css/homepage.css'%}">
 </head>
 <body>
-    <div class="name-grid">
-        <div class="mainphoto">
-            <img src="{% static 'dev/mainphoto.png' %}">
-        </div>
-        <p class="Moscow">📍Москва</p>
-        <a><button class="menu">Войти</button></a>
-        <a><button class="menu">Профиль</button></a>
-        <a><button class="menu">Акции</button></a>
+<div class="name-grid">
+    <div class="mainphoto">
+        <img src="{% static 'dev/mainphoto.png' %}">
     </div>
-    <div class="photo-grid">
-        <div class="photo1">
-            <img src="{% static 'img/homepage/people.png' %}" class="photostyle1">
-        </div>
-        <div class="photo2">
-            <img src="{% static 'img/homepage/pizza.png' %}" class="photostyle2">
-        </div>
+
+    {% if request.user.is_authenticated %}
+        <a href="{% url 'sales:sales' %}">
+            <button class="menu">Акции</button>
+        </a>
+        <a href="{% url 'cart:user_cart' request.user.id %}">
+            <button class="menu">Корзина</button>
+        </a>
+        <a href="{% url 'users:profile' request.user.id %}">
+            <button class="menu">Профиль</button>
+        </a>
+        <form method="POST" action="{% url 'logout' %}" class="menu">
+            {% csrf_token %}
+            <button type="submit" class="menu">Выйти</button>
+        </form>
+    {% else %}
+        <p></p>
+        <p></p>
+        <p></p>
+        <a href="{% url 'login' %}">
+            <button class="menu">Войти</button>
+        </a>
+    {% endif %}
+</div>
+<div class="photo-grid">
+    <div class="photo1">
+        <img src="{% static 'img/homepage/people.png' %}" class="photostyle1">
     </div>
-    <div class="photo2-grid">
-        <div class="ourmenu">
-            <a><button class="buttonourmenu">Наше меню</button></a>
-        </div>
+    <div class="photo2">
+        <img src="{% static 'img/homepage/pizza.png' %}" class="photostyle2">
     </div>
+</div>
+<div class="photo2-grid">
+    <div class="ourmenu">
+        <a href="{% url 'products:menu' %}">
+            <button class="buttonourmenu">Наше меню</button>
+        </a>
+    </div>
+</div>
+</body>
+</html>
+

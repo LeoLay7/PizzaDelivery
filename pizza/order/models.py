@@ -1,10 +1,13 @@
 import django.db.models
+import django.db.models.signals
+import django.dispatch
 
 import users.models
 import products.models
 import payment.models
 
 from order.tools import statuses
+import order.managers
 
 
 class Order(django.db.models.Model):
@@ -26,6 +29,7 @@ class Order(django.db.models.Model):
         choices=statuses,
         max_length=30,
         verbose_name="статус",
+        default='Готовится'
     )
     address = django.db.models.ForeignKey(
         users.models.Address,
@@ -39,9 +43,15 @@ class Order(django.db.models.Model):
         verbose_name="способ оплаты",
         null=True
     )
-    date = django.db.models.DateField(verbose_name="дата заказа")
-    to_time = django.db.models.TimeField(verbose_name="доставка ко времени")
+    date = django.db.models.DateTimeField(verbose_name="дата заказа", auto_now_add=True)
+    to_time = django.db.models.TimeField(verbose_name="доставка ко времени", blank=True)
     comment = django.db.models.TextField(verbose_name="комментарий", blank=True, null=True,)
+
+    objects = order.managers.OrderManager()
+
+    class Meta:
+        verbose_name = "заказ"
+        verbose_name_plural = "заказы"
 
     def __str__(self):
         return f"{self.user.name} {self.price} {self.address}"
@@ -63,3 +73,21 @@ class OrderStatusLog(django.db.models.Model):
     time = django.db.models.DateTimeField(
         auto_now_add=True,
     )
+
+    class Meta:
+        verbose_name = "лог заказа"
+        verbose_name_plural = "логи заказов"
+
+
+@django.dispatch.receiver(django.db.models.signals.pre_save, sender=Order)
+def create_order_status_log(sender, instance, **kwargs):
+    if not instance.pk:
+        return
+
+    previous = Order.objects.get(pk=instance.pk)
+    if previous.status != instance.status:
+        OrderStatusLog.objects.create(
+            order=instance,
+            from_status=previous.status,
+            to_status=instance.status
+        )

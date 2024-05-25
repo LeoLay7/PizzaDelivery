@@ -136,6 +136,17 @@ body {
     height: 108px;
 }
 
+.BIN {
+    width: 100.33px;
+    height: 60.85px;
+    background: #FF6700;
+    border-radius: 28px;
+    font-size: 19px;
+    border: none; /* Убираем границу */
+    color: white;
+    font-weight: bold;
+}
+
 .custom-box {
     position: fixed;
  

@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 
 from dotenv import load_dotenv
+import django.urls
 
 load_dotenv()
 
@@ -26,11 +27,11 @@ INSTALLED_APPS = [
     "products.apps.ProductsConfig",
     "homepage.apps.HomepageConfig",
     "cart.apps.CartConfig",
-    "about.apps.AboutConfig",
     "phonenumber_field",
     "users.apps.UsersConfig",
     "api.apps.ApiConfig",
-    "django_cleanup.apps.CleanupConfig"
+    "django_cleanup.apps.CleanupConfig",
+    "sales.apps.SalesConfig",
 ]
 
 MIDDLEWARE = [
@@ -94,9 +95,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "ru-ru"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = 'Europe/Moscow'
+
 
 USE_I18N = True
 
@@ -116,5 +118,8 @@ MEDIA_ROOT = BASE_DIR / "media"
 MEDIA_URL = "/media/"
 
 LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = django.urls.reverse_lazy("login")
+LOGOUT_URL = django.urls.reverse_lazy("logout")
+LOGOUT_REDIRECT_URL = django.urls.reverse_lazy("login")
 
 

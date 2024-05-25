@@ -8,7 +8,11 @@ class Card(django.db.models.Model):
         users.models.User,
         related_name="cards",
     )
-    last_numbers = django.db.models.CharField(max_length=20)
+    last_numbers = django.db.models.CharField(max_length=20, verbose_name="номер карты")
+
+    class Meta:
+        verbose_name = "карта"
+        verbose_name_plural = "карты"
 
     def __str__(self):
         return f"{self.last_numbers}"

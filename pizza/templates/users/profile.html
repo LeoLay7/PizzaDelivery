@@ -34,7 +34,7 @@
             {% for address in user.addresses.all %}
                 {% include 'includes/profile_address_card.html' %}
             {% empty %}
-                <p class="empty_alert">Вы пока не добавили адрес</p>
+                <div id="empty_address"><p class="empty_alert">Вы пока не добавили адрес</p></div>
             {% endfor %}
         </div>
         <div id="address_form_container"> </div> {# для формы #}
@@ -48,7 +48,7 @@
             {% for card in user.cards.all %}
                 {% include 'includes/profile_card_card.html' %}
             {% empty %}
-                <p class="empty_alert">Вы пока не добавили способ оплаты</p>
+                <div id="empty_card"><p class="empty_alert">Вы пока не добавили способ оплаты</p></div>
             {% endfor %}
         </div>
         <div id="card_form_container"> </div> {# для формы #}
