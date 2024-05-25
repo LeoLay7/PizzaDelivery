@@ -3,10 +3,44 @@ body {
     font-family: 'Titillium Web', sans-serif;
 }
 
+.btn {
+    background-color: #FF6700;
+    color: rgba(255, 255, 255, 1);
+    border: 20px;
+    border-radius: 20px;
+    font-size: 18px;
+}
 
+.btn-primary {
+    margin: 10px;
+}
 
+.container {
+    border: 3px solid;
+    border-color: #FF6700;
+    margin-left: 400px;
+    margin-right: 400px;
+    margin-top: 20px;
+}
 
+.payment-body {
+    margin: 10px;
+}
 
+.empty_alert {
+    margin-left: 40px;
+}
+
+input {
+    border-radius: 10px;
+    margin-left: 10px;
+    background-color: rgba(255, 255, 255, 0);
+    border-color: #FF6700;
+}
+
+input:focus {
+    outline: 0;
+}
 
 
 

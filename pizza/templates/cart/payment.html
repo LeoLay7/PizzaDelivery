@@ -27,11 +27,13 @@
 
 <div class="container">
     <p style="font-size: 20px;">Подтверждение оплаты</p>
-    <p>Сумма заказа: {{ amount }}</p>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Оплатить</button>
-    </form>
+    <div class="payment-body">
+        <p>Сумма заказа: {{ amount }}</p>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Оплатить</button>
+        </form>
+    </div>
 </div>
 {% endblock %}
