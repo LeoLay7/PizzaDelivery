@@ -1,0 +1,37 @@
+body {
+    background: #fbd7a2;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
+.mainphoto img{
+    width: 203px;
+    height: 108px;
+}
+.menu {
+    width: 100.33px;
+    height: 50.85px;
+    background: #FF6700;
+    border-radius: 28px;
+    font-size: 17px;
+    border: none; /* Убираем границу */
+    color: white;
+    font-weight: bold;
+}
+
+.shapka {
+    display: grid;
+    grid-template-columns: 310px 200px 200px 200px 200px 400px 150px; /* Определение 7 столбцов с определенной шириной */
+    grid-template-rows: 108px; /* Определение высоты каждой строки */
+    align-items: center;
+    padding-top: 32px;
+    padding-left: 32px;
+}
