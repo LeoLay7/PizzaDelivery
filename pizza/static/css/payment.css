@@ -1,41 +1,18 @@
 body {
-    background-color: rgba(255, 222, 192, 0.74);
+    background: #fbd7a2;
     font-family: 'Titillium Web', sans-serif;
-}
-
-.profile_data {
-    margin-left: 30px;
-    margin-right: 30px;
-}
-
-.addresses {
-    margin-left: 20px;
-    display: flex;
-}
-
-.payment {
-    margin-left: 20px;
-    display: flex;
-}
-
-.orders {
-    margin-left: 20px;
 }
 
 .btn {
     background-color: #FF6700;
     color: rgba(255, 255, 255, 1);
     border: 20px;
-    border-radius: 10%;
-    font-size: 14px;
+    border-radius: 20px;
+    font-size: 18px;
 }
 
 .btn-primary {
     margin: 10px;
-}
-
-.btn-danger {
-    margin-left: 10px;
 }
 
 .container {
@@ -46,44 +23,8 @@ body {
     margin-top: 20px;
 }
 
-.data_form {
-    display: flex;
-    margin-left: 60px;
-    margin-right: 60px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-.order_card {
-    border: 2px solid;
-    border-color: #c4c4c48a;
-    border-radius: 5px;
+.payment-body {
     margin: 10px;
-}
-
-.order_address_price {
-    display: flex;
-    margin-left: 10px;
-    margin-top: -20px;
-    
-}
-.order_address_form {
-    font-size: 12px;
-}
-
-.order_date_form {
-    margin-left: 10px;
-}
-
-.order_price_form {
-    margin-right: 10px;
-    margin-left: auto;
-    margin-top: -10px;
-    font-size: 18px;
-}
-
-.btn-order-info {
-    margin-bottom: 10px;
 }
 
 .empty_alert {
@@ -100,6 +41,10 @@ input {
 input:focus {
     outline: 0;
 }
+
+
+
+
 
 .mainphoto img{
     width: 203px;

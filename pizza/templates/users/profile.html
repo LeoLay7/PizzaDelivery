@@ -8,10 +8,25 @@
 {% endblock %}
 
 {% block content %}
+<div class="shapka">
+    <div class="mainphoto">
+        <a href="{% url 'homepage:home' %}"><img src="{% static 'dev/mainphoto.png' %}"></a>
+    </div>
+    <a href="{% url 'sales:sales' %}">
+        <button class="menu">Акции</button>
+    </a>
+    <a href="{% url 'cart:user_cart' request.user.id %}">
+        <button class="menu">Корзина</button>
+    </a>
+    <form method="POST" action="{% url 'logout' %}" class="menu">
+        {% csrf_token %}
+        <button type="submit" class="menu">Выйти</button>
+    </form>
+</div>
 
-<div class="container">
-    <p style="margin: 10px;">ПРОФИЛЬ</p>
+<div class="container">    
     <div class="profile_data">
+        <p style="font-size: 20px;">ПРОФИЛЬ</p>
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
