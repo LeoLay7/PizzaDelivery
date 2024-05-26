@@ -73,4 +73,71 @@
         {% include 'includes/profile_scripts.html' %}
     </div>
 </div>
+<script src="https://openlayers.org/api/2.13.1/OpenLayers.js"></script>
+<script>
+    let map;
+    const lat = 55.810854500000005;
+    const lon = 37.501335875503884;
+    const zoom = 18;
+    const fromProjection = new OpenLayers.Projection("EPSG:4326");
+    const toProjection = new OpenLayers.Projection("EPSG:900913");
+    const position = new OpenLayers.LonLat(lon, lat).transform(fromProjection, toProjection);
+
+    async function loadMap() {
+        window.setTimeout(function () {
+            initMap()
+        }, 100);
+    }
+
+    function initMap() {
+        map = new OpenLayers.Map("Map");
+        let mapnik = new OpenLayers.Layer.OSM();
+        map.addLayer(mapnik);
+
+        map.setCenter(position, zoom);
+
+        let click = new OpenLayers.Control.Click();
+        map.addControl(click);
+
+        click.activate();
+    }
+
+    OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {
+        defaultHandlerOptions: {
+            'single': true,
+            'double': false,
+            'pixelTolerance': 0,
+            'stopSingle': false,
+            'stopDouble': false
+        },
+
+        initialize: function (options) {
+            this.handlerOptions = OpenLayers.Util.extend(
+                {}, this.defaultHandlerOptions
+            );
+            OpenLayers.Control.prototype.initialize.apply(
+                this, arguments
+            );
+            this.handler = new OpenLayers.Handler.Click(
+                this, {
+                    'click': this.trigger
+                }, this.handlerOptions
+            );
+        },
+
+
+        trigger: function (e) {
+            let lonlat = map.getLonLatFromPixel(e.xy);
+            lonlat = new OpenLayers.LonLat(lonlat.lon, lonlat.lat).transform(toProjection, fromProjection);
+
+            fetch(`https://nominatim.openstreetmap.org/search.php?q=${lonlat.lat},${lonlat.lon}&polygon_geojson=1&format=json`)
+                .then(res => res.json())
+                .then(res => {
+                    document.getElementById("address").value = res[0].display_name;
+                })
+        }
+
+    })
+</script>
+
 {% endblock %}
