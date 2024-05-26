@@ -1,0 +1,40 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Оплата{% endblock %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/payment.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="shapka">
+    <div class="mainphoto">
+        <a href="{% url 'homepage:home' %}"><img src="{% static 'dev/mainphoto.png' %}"></a>
+    </div>
+    <a href="{% url 'sales:sales' %}">
+        <button class="menu">Акции</button>
+    </a>
+    <a href="{% url 'users:profile' request.user.id %}">
+        <button class="menu">Профиль</button>
+    </a>
+    <form method="POST" action="{% url 'logout' %}" class="menu">
+        {% csrf_token %}
+        <button type="submit" class="menu">Выйти</button>
+    </form>
+</div>
+
+<p style="font-size: 28px; text-align: center;">Подтверждение оплаты</p>
+<div class="container">
+    <div class="payment-body">
+        <p>Сумма заказа: {{ amount }}</p>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Оплатить</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

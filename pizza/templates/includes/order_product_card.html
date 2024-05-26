@@ -1,0 +1,26 @@
+
+{% load startswith %}
+<div class="item">
+
+    <div class="image">
+        <img src="{{ product.base_product.image.url }}" alt=""/>
+    </div>
+
+    <div class="description">
+        <span>{{ product.base_product.name }}</span>
+        <span>{{ product.base_product.get_ingredients }}</span>
+         {% if product.added_ingredient.exists %}-->
+            <span>ДОП: {{ product.get_added_ingredients }}</span>
+        {% endif %}
+        {% if product.removed_ingredient.exists %}
+            <span>БЕЗ: {{ product.get_removed_ingredients }}</span>
+        {% endif %}
+    </div>
+    <div class="size-options-for-pizza">
+        <span>Кол-во: {{ product.quantity }}</span>
+    </div>
+    <div class="size-options-for-pizza">
+        <span>{{ product.base_product.product_type.sizes|get:product.size }}</span>
+    </div>
+    <div class="total-price">{{ product.amount }} ₽</div>
+</div>

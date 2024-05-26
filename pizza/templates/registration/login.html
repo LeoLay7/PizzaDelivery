@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Вход{% endblock %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'css/menu.css'%}">
+<link rel="stylesheet" href="{% static 'css/login.css'%}">
+{% endblock %}
+
+
+{% block content %}
+<div class="mainphoto">
+    <a href="{% url 'homepage:home' %}"><img src="{% static 'dev/mainphoto.png' %}"></a>
+</div>
+
+<div class="form">
+
+    <div id="login">
+        <h1>Вход</h1>
+
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            {% csrf_token %}
+            {% if form.errors %}
+            {% for field in form %}
+            {% for error in field.errors %}
+            <p> {{ error }} </p>
+            {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+            <p> {{ error }} </p>
+            {% endfor %}
+            {% endif %}
+            <div class="field-wrap">
+                <p>Почта<span class="req">*</span></p>
+                {{ form.username }}
+            </div>
+
+            <div class="field-wrap">
+                <p>Пароль<span class="req">*</span></p>
+                {{ form.password }}
+            </div>
+
+            <button class="button button-block">Войти</button>
+
+        </form>
+
+    </div>
+    <p style="font-size: 20px;">Нет аккаунта?<a href="{% url 'users:register' %}"
+                                                class="text-center">Зарегистрироваться</a></p>
+</div>
+
+
+<script src="js/index.js"></script>
+{% endblock %}

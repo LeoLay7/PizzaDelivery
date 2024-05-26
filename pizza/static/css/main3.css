@@ -1,0 +1,14 @@
+.photostyle {
+    /* жар1 1 */
+    position: absolute;
+    width: 203px;
+    height: 108px;
+    left: 32px;
+    top: 32px;
+    background-attachment: fixed;
+
+}
+body{
+    background-color: rgba(255, 222, 192, 0.74);
+   
+}

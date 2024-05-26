@@ -1,0 +1,11 @@
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+<div id="address_{{ address.id }}" class="data_form">
+    <li>{{ address }}</li>
+    {% csrf_token %}
+    <button id="delete_address_{{ user.id }}_{{ address.id }}" class="btn btn-danger">-</button>
+</div>

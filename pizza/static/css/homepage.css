@@ -1,0 +1,84 @@
+body {
+    background-color: rgba(255, 222, 192, 0.74);
+}
+.name-grid {
+    display: grid;
+    grid-template-columns: 750px 180px 180px 180px 180px; 
+    grid-template-rows: auto; 
+    align-items: center;
+    padding-top: 32px;
+    padding-left: 32px;
+  }
+
+
+
+.mainphoto img{
+    width: 203px;
+    height: 108px;
+}
+.menu {
+    width: 100.33px;
+    height: 50.85px;
+    background: #FF6700;
+    border-radius: 28px;
+    font-size: 17px;
+    border: none; /* Убираем границу */
+    color: white;
+    font-weight: bold;
+}
+
+.menu:hover {
+    background: #fba56c;
+    cursor: pointer; 
+}
+* {
+    box-sizing: border-box;
+  }
+   
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+  }
+  .Moscow{
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+    color: #BE691D;
+
+}
+.photo-grid {
+  display: grid;
+  grid-template-columns: 550px 400px; 
+  grid-template-rows: 600px; 
+  align-items: center;
+  padding-left: 32px;
+  z-index: 1;
+}
+
+.buttonourmenu{
+  width: 438px;
+  height: 138px;
+  background: #FF6700;
+  border-radius: 40px;
+  font-size: 48px;
+  border: none; /* Убираем границу */
+  color: white;
+  font-weight: bold;
+}
+.buttonourmenu:hover {
+  background: #fba56c;
+  cursor: pointer; 
+}
+.photo2-grid {
+  display: grid;
+  grid-template-columns: 600px; 
+  grid-template-rows: 10px; 
+  align-items: center;
+  padding-left: 100px;
+  z-index: 1;
+}

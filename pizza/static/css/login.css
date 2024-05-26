@@ -1,0 +1,148 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+  }
+  
+  html {
+    overflow-y: scroll;
+  }
+  
+  body {
+    background: #fbd7a2;
+    font-family: 'Titillium Web', sans-serif;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #cd7d2e;
+    -webkit-transition: .5s ease;
+    transition: .5s ease;
+    
+  }
+  a:hover {
+    color: #cd7d2e;
+  }
+  
+  .form {
+    background: #fbd7a2;
+    padding: 40px;
+    max-width: 600px;
+    margin: 40px auto;
+    border: 3px solid #ff6700;
+  }
+  
+  .tab-group {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px 0;
+  }
+  .tab-group:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .tab-group li a {
+    display: block;
+    text-decoration: none;
+    padding: 15px;
+    background: rgba(233, 186, 125, 0.924);
+    color: #ffffff;
+    font-size: 20px;
+    float: left;
+    width: 50%;
+    text-align: center;
+    cursor: pointer;
+    -webkit-transition: .5s ease;
+    transition: .5s ease;
+  }
+  .tab-group li a:hover {
+    background: #cd7d2e;
+    color: #ffffff;
+  }
+  .tab-group .active a {
+    background: #cd7d2e;
+    color: #ffffff;
+  }
+  
+  .tab-content > div:last-child {
+    display: none;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #ffffff;
+    font-weight: 300;
+    margin: 0 0 40px;
+  }
+  
+  input, textarea {
+    font-size: 22px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 5px 10px;
+    background: none;
+    background-image: none;
+    border: 1px solid #ff6700;
+    color: #ffffff;
+    border-radius: 50px;
+    -webkit-transition: border-color .25s ease, box-shadow .25s ease;
+    transition: border-color .25s ease, box-shadow .25s ease;
+  }
+  input:focus, textarea:focus {
+    outline: 0;
+    border-color: #cd7d2e;
+  }
+  
+  textarea {
+    border: 2px solid #ff6700;
+    resize: vertical;
+  }
+  
+  .field-wrap {
+    position: relative;
+    margin-bottom: 40px;
+  }
+  
+  .top-row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .top-row > div {
+    float: left;
+    width: 48%;
+    margin-right: 4%;
+  }
+  .top-row > div:last-child {
+    margin: 0;
+  }
+  
+  .button {
+    border: 0;
+    outline: none;
+    border-radius: 50px;
+    padding: 15px 0;
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    background: #cd7d2e;
+    color: #ffffff;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    -webkit-appearance: none;
+  }
+  .button:hover, .button:focus {
+    background: #ff6700;
+  }
+  
+  .button-block {
+    display: block;
+    width: 100%;
+  }
+  
+  .forgot {
+    margin-top: -20px;
+    text-align: right;
+  }
+  

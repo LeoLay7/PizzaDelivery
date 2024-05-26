@@ -1,0 +1,17 @@
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+
+<div class="order_card">
+    <p class="order_date_form">{{ order.date }}</p>
+
+    <div class="order_address_price">
+        <p class="order_address_form">{{ order.address.address }}</p>
+        <p class="order_price_form">{{ order.price }}</p>
+    </div>
+
+    <a href="{% url 'orders:order' order.pk %}" class="btn btn-primary">Подробнее</a>
+</div>

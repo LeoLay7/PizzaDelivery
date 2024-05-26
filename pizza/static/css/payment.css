@@ -1,0 +1,88 @@
+
+body {
+    background-color: rgba(255, 222, 192, 0.74);
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 22px;
+}
+
+.btn {
+    background-color: #FF6700;
+    color: rgba(255, 255, 255, 1);
+    border: 20px;
+    border-radius: 20px;
+    font-size: 22px;
+}
+
+.btn-primary {
+    margin: 10px;
+}
+
+.container {
+    border: 3px solid;
+    border-color: #FF6700;
+    border-radius: 10px;
+    margin-left: 400px;
+    margin-right: 400px;
+    margin-top: 20px;
+}
+
+.payment-body {
+    margin: 10px;
+}
+
+input:focus {
+    outline: 0;
+}
+
+select {
+    border-color: #FF6700;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-top: 5px;
+    font-size: 18px;
+}
+
+select:focus {
+    outline: 0;
+}
+
+textarea {
+    border-radius: 10px;
+    border-color: #FF6700;
+    margin: 10px;
+    resize: none;
+    font-size: 18px;
+}
+
+textarea:focus {
+    outline: 0;
+}
+
+label {
+    display: flex;
+}
+
+.mainphoto img{
+    width: 203px;
+    height: 108px;
+}
+.menu {
+    width: 100.33px;
+    height: 50.85px;
+    background: #FF6700;
+    border-radius: 28px;
+    font-size: 17px;
+    border: none; /* Убираем границу */
+    color: white;
+    font-weight: bold;
+}
+
+.shapka {
+    display: grid;
+    grid-template-columns: 310px 200px 200px 200px 200px 400px 150px; /* Определение 7 столбцов с определенной шириной */
+    grid-template-rows: 108px; /* Определение высоты каждой строки */
+    align-items: center;
+    padding-top: 32px;
+    padding-left: 32px;
+}
