@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<p>HOMEPAGE</p>
+{% for product in base_products %}
+    <div>
+        <img src="{{ product.image.url }}" height=300 width=300>
+        <p class="red-text">{{ product.name }}</p>
+    </div>
+{% endfor %}
+{% endblock %}
