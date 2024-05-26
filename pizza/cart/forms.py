@@ -21,6 +21,7 @@ class CartPaymentForm(django.forms.Form):
         self.fields["time"] = django.forms.ChoiceField(
             choices=cart.tools.order_time,
             label="Ко времени",
+            required=False,
         )
         self.fields["comment"] = django.forms.CharField(
             required=False,

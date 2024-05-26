@@ -8,9 +8,9 @@ import users.managers
 
 class Address(django.db.models.Model):
     address = django.db.models.CharField(max_length=300, verbose_name="адрес")
-    entrance = django.db.models.CharField(verbose_name="подъезд", max_length=5, null=True)
-    floor = django.db.models.CharField(verbose_name="этаж", max_length=5, null=True)
-    flat = django.db.models.CharField(verbose_name="квартира", max_length=5, null=True)
+    entrance = django.db.models.IntegerField(verbose_name="подъезд", null=True)
+    floor = django.db.models.IntegerField(verbose_name="этаж", null=True)
+    flat = django.db.models.IntegerField(verbose_name="квартира", null=True)
 
     class Meta:
         verbose_name = "адрес"

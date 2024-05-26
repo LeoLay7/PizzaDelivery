@@ -1,5 +1,4 @@
 import django.db.models
-import django.db.models.signals
 import django.dispatch
 
 import users.models
@@ -44,7 +43,7 @@ class Order(django.db.models.Model):
         null=True
     )
     date = django.db.models.DateTimeField(verbose_name="дата заказа", auto_now_add=True)
-    to_time = django.db.models.TimeField(verbose_name="доставка ко времени", blank=True)
+    to_time = django.db.models.TimeField(verbose_name="доставка ко времени", blank=True, null=True)
     comment = django.db.models.TextField(verbose_name="комментарий", blank=True, null=True,)
 
     objects = order.managers.OrderManager()
