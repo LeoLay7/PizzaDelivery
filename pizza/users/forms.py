@@ -22,6 +22,6 @@ class AddAddressForm(django.forms.ModelForm):
         fields = ["address", "entrance", "floor", "flat"]
 
         widgets = {
-            'address': django.forms.TextInput(attrs={'id': 'address'}),
+            'address': django.forms.TextInput(attrs={'id': 'address', "readonly": True}),
         }
 
