@@ -20,7 +20,7 @@ class Ingredient(django.db.models.Model):
 class ProductType(django.db.models.Model):
     name = django.db.models.CharField(max_length=30, verbose_name="тип")
     sizable = django.db.models.BooleanField(verbose_name="изменяемый размер")
-    sizes = django.db.models.JSONField(verbose_name="размеры")
+    sizes = django.db.models.JSONField(verbose_name="размеры", blank=True, null=True)
     extra_fields = django.db.models.JSONField(verbose_name="доп. поля", blank=True, null=True)
     label = django.db.models.CharField(max_length=30, verbose_name="тип во мн. числе", null=True, )
     label_id = django.db.models.CharField(max_length=30, verbose_name="тип на анг. языке", null=True, )

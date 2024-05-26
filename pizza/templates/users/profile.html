@@ -5,10 +5,25 @@
 
 {% block links %}
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/payment.css' %}">
 {% endblock %}
 
 {% block content %}
-
+<div class="shapka">
+    <div class="mainphoto">
+        <a href="{% url 'homepage:home' %}"><img src="{% static 'dev/mainphoto.png' %}"></a>
+    </div>
+    <a href="{% url 'sales:sales' %}">
+        <button class="menu">Акции</button>
+    </a>
+    <a href="{% url 'users:profile' request.user.id %}">
+        <button class="menu">Профиль</button>
+    </a>
+    <form method="POST" action="{% url 'logout' %}" class="menu">
+        {% csrf_token %}
+        <button type="submit" class="menu">Выйти</button>
+    </form>
+</div>
     <div class="container">
         <p style="margin: 10px;">ПРОФИЛЬ</p>
         <div class="profile_data">
