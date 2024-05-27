@@ -22,7 +22,7 @@ body {
     font-weight: 400;
     line-height: 37px;
     max-width: 562px;
-    padding: 24px 0 0 0;
+    max-height: 700px;
     text-align: center;
     background: #FFFFFF;
     border-radius: 50px;
